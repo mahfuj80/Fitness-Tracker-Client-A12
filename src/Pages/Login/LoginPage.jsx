@@ -1,5 +1,5 @@
 import { useLottie } from 'lottie-react';
-import loginAnimation from './Animation/login_animation.json';
+import loginAnimation from './animation/login_animation.json';
 const LoginPage = () => {
   const options = {
     animationData: loginAnimation,
