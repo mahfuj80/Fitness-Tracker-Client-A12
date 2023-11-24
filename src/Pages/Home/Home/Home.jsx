@@ -1,4 +1,5 @@
 import SectionTitle from '../../../Components/Shared/SectionTitle/SectionTitle';
+import Banner from '../Banner/Banner';
 import Faq from '../FaqSection/Faq';
 import OurTrainers from '../OurBestTrainersSection/OurTrainers';
 import Review from '../ReviewSection/Review';
@@ -6,6 +7,7 @@ import Review from '../ReviewSection/Review';
 const Home = () => {
   return (
     <div>
+      <Banner></Banner>
       {/* Review Section */}
       <SectionTitle
         shortTitle={'Review'}
