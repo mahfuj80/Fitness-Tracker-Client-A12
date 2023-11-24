@@ -3,8 +3,8 @@ const SectionTitle = ({ shortTitle, longTitle, description }) => {
   return (
     <div className="-mx-4 flex flex-wrap mt-12">
       <div className="w-full px-4">
-        <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
-          <span className="mb-2 block text-lg font-semibold text-primary">
+        <div className="mx-auto mb-12 max-w-[510px] text-center lg:mb-16">
+          <span className="mb-2 block text-lg font-semibold text-primary uppercase">
             {shortTitle}
           </span>
           <h2 className="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">
