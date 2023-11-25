@@ -19,11 +19,11 @@ const Faq = () => {
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  How can I access Jim`s training programs?
+                  How can I access Gym`s training programs?
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                Visit our website, sign up for exclusive access to Jim`s expert
+                Visit our website, sign up for exclusive access to Gym`s expert
                 training sessions, and tailor your workouts based on your
                 fitness level, preferences, and goals.
               </AccordionItemPanel>
@@ -34,11 +34,11 @@ const Faq = () => {
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  Are Jim`s workouts suitable for all fitness levels?
+                  Are Gym`s workouts suitable for all fitness levels?
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                Absolutely, Jim`s programs cater to all levels, offering
+                Absolutely, Gym`s programs cater to all levels, offering
                 beginner-friendly routines and advanced options for those
                 seeking a challenge.
               </AccordionItemPanel>
@@ -49,11 +49,11 @@ const Faq = () => {
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  Can I customize my workout with Jim?
+                  Can I customize my workout with Gym?
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                Yes, Jim`s programs are designed for personalization. Tailor
+                Yes, Gym`s programs are designed for personalization. Tailor
                 your workouts based on your fitness level, preferences, and
                 specific goals.
               </AccordionItemPanel>
@@ -66,11 +66,11 @@ const Faq = () => {
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  What nutritional guidance does Jim provide?
+                  What nutritional guidance does Gym provide?
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                Jim emphasizes a balanced diet. Access personalized nutrition
+                Gym emphasizes a balanced diet. Access personalized nutrition
                 advice and meal plans that complement your fitness goals and
                 enhance overall well-being.
               </AccordionItemPanel>
@@ -81,11 +81,11 @@ const Faq = () => {
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  How does Jim keep clients motivated?
+                  How does Gym keep clients motivated?
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                Jim uses positive reinforcement, goal-setting, and regular
+                Gym uses positive reinforcement, goal-setting, and regular
                 check-ins to create a supportive environment that keeps clients
                 motivated and committed to their fitness journey.
               </AccordionItemPanel>
@@ -96,11 +96,11 @@ const Faq = () => {
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  What sets Jim`s training philosophy apart?
+                  What sets Gym`s training philosophy apart?
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                Jim`s holistic approach integrates strength, flexibility, and
+                Gym`s holistic approach integrates strength, flexibility, and
                 cardiovascular exercises, ensuring a well-rounded fitness
                 experience that promotes overall health and long-term
                 well-being.

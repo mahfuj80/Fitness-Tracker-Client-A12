@@ -75,7 +75,7 @@ const Home = () => {
         shortTitle={'Trainers'}
         longTitle={'Our Best Trainers'}
         description={
-          "Jim's trainers excel with personalized fitness plans, motivating clients to achieve goals through expert guidance, making workouts enjoyable and effective."
+          "Gym's trainers excel with personalized fitness plans, motivating clients to achieve goals through expert guidance, making workouts enjoyable and effective."
         }
       ></SectionTitle>
       <OurTrainers></OurTrainers>

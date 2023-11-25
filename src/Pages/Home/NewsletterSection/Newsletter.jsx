@@ -10,7 +10,7 @@ const Newsletter = () => {
     const value = {
       email: inputRef.current.value,
     };
-    if (value === '') {
+    if (value?.email === '') {
       setError('Please Provide email');
       return;
     } else if (/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/.test(value?.email)) {
