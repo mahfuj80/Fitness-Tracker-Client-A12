@@ -4,6 +4,7 @@ import img2 from '../../../assets/images/Banner/img2.jpg';
 import img3 from '../../../assets/images/Banner/img3.jpg';
 import img4 from '../../../assets/images/Banner/img4.jpg';
 import img5 from '../../../assets/images/Banner/img5.jpg';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   const data = [
@@ -34,13 +35,26 @@ const Banner = () => {
     fontWeight: 'bold',
   };
   return (
-    <div className="App overflow-hidden ">
+    <div className="App mx-auto overflow-hidden ">
       <div style={{ textAlign: 'center' }}>
         <div
+          className="relative"
           style={{
             padding: '0 auto',
           }}
         >
+          <div className="absolute z-10 top-[20%] sm:top-1/2 left-[6%]">
+            <p className="text-white sm:font-semibold px-12  sm:w-1/2 mx-auto">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
+              quis recusandae enim at qui, cum praesentium non voluptate! Neque,
+              tempore.
+            </p>
+            <Link to={'/classes'}>
+              <button className="btn mt-4 btn-sm sm:btn sm:btn-primary btn-primary">
+                View Classes
+              </button>
+            </Link>
+          </div>
           <Carousel
             data={data}
             time={2000}
@@ -49,14 +63,14 @@ const Banner = () => {
             captionStyle={captionStyle}
             radius="10px"
             slideNumber={false}
-            captionPosition="center"
+            captionPosition="top"
             automatic={true}
             dots={true}
             pauseIconColor="white"
             pauseIconSize="40px"
             slideBackgroundColor="darkgrey"
             slideImageFit="cover"
-            thumbnails={false}
+            thumbnails={true}
             thumbnailWidth="100px"
             style={{
               textAlign: 'center',

@@ -99,7 +99,7 @@ const RegisterPage = () => {
       <Helmet>
         <title>Fitness-Tracker | Register</title>
       </Helmet>
-      <img className="w-fit mx-auto mt-8" src={logo} alt="logo" />
+      <img className="w-fit mx-auto mt-8 -mb-8" src={logo} alt="logo" />
       <SectionTitle
         longTitle={'Register Now!'}
         description={
