@@ -10,7 +10,7 @@ const About = () => {
           alt="Image"
         />
       </div>
-      <div className="bg-[#212a39] text-white md:w-1/2 p-4 mx-4 md:-ml-20 -mt-20 rounded-lg md:my-10 h-[80%]">
+      <div className="dark:bg-[#212a39] bg-gray-100  dark:text-white md:w-1/2 p-4 mx-4 md:-ml-20 -mt-20 rounded-lg md:my-10 h-[80%]">
         <p className="text-center">About Us</p>
         <div className="mt-2">
           <h1 className="text-2xl font-bold text-center">
