@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import DarkWhite from '../../DarkWhiteTheme/DarkWhite';
@@ -17,10 +17,21 @@ const Navbar = () => {
   const navElement = (
     <>
       <li>
-        <Link to={'/'}>Home</Link>
+        <NavLink to={'/'}>Home</NavLink>
       </li>
       <li>
-        <Link to={'/about'}>About</Link>
+        <NavLink to={'/about'}>About</NavLink>
+      </li>
+    </>
+  );
+
+  const loginAndLogOutButton = (
+    <>
+      <li className="font-semibold">
+        <NavLink to={'/login'}>Login</NavLink>
+      </li>
+      <li className="font-semibold">
+        <NavLink to={'/register'}>Sign Up</NavLink>
       </li>
     </>
   );
@@ -63,33 +74,37 @@ const Navbar = () => {
           <div className="mr-4 lg:mr-5">
             <DarkWhite></DarkWhite>
           </div>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
+          {user ? undefined : (
+            <ul className="menu menu-sm menu-horizontal">
+              {loginAndLogOutButton}
             </ul>
-          </div>
+          )}
+          {user && (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src={user?.photoURL} alt="Profile_Image" />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to={'/profile'} className="justify-between">
+                    {user?.displayName}
+                    <span className="badge">New</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={'/settings'}>Settings</Link>
+                </li>
+                <li>
+                  {user && <button onClick={handleLogOut}>Log Out</button>}
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
