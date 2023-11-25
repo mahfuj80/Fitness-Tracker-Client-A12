@@ -2,7 +2,7 @@ import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import './styles.css';
 
-const Review = () => {
+const SuccessStories = () => {
   const [sliderRef] = useKeenSlider(
     {
       loop: true,
@@ -209,4 +209,4 @@ const Review = () => {
   );
 };
 
-export default Review;
+export default SuccessStories;
