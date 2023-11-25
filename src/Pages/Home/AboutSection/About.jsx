@@ -11,9 +11,9 @@ const About = () => {
         />
       </div>
       <div className="bg-[#212a39] text-white md:w-1/2 p-4 mx-4 md:-ml-20 -mt-20 rounded-lg md:my-10 h-[80%]">
-        <p>About Us</p>
+        <p className="text-center">About Us</p>
         <div className="mt-2">
-          <h1 className="text-2xl font-bold">
+          <h1 className="text-2xl font-bold text-center">
             Here is all You need to know About us.
           </h1>
           <h1 className="font-bold mt-4 text-center text-lg">Our Mission</h1>

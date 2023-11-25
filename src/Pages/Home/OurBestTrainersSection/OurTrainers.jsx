@@ -1,31 +1,38 @@
-import { Link } from 'react-router-dom';
+import TrainersCard from '../../../Components/HomePage/TrainersCard';
 
 const OurTrainers = () => {
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-col items-center pb-10">
-        <img
-          className="w-24 h-24 mb-3 rounded-full shadow-lg"
-          src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
-          alt="Bonnie image"
-        />
-        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-          Bonnie Green
-        </h5>
-        <h5 className="mb-1 text-base font-medium text-gray-900 dark:text-white">
-          Bonnie Green
-        </h5>
-        <p className="text-sm mx-2 text-center text-gray-500 dark:text-gray-400">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi eaque
-          neque alias amet nulla asperiores fugit, voluptatem necessitatibus
-          dolore eligendi!
-        </p>
-        <div className="mt-4 md:mt-6">
-          <Link className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Details
-          </Link>
-        </div>
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <TrainersCard
+        name={'Alexander'}
+        title={'Personalized Fitness Architect'}
+        description={
+          'Craft your unique fitness blueprint with tailored workout plans and expert guidance, ensuring your journey is as individual as you are.'
+        }
+        img={
+          'https://img.freepik.com/free-photo/serious-attractive-man-is-doing-exercises-with-training-apparatus-dark-gym-club_613910-14549.jpg?w=740&t=st=1700904017~exp=1700904617~hmac=d88c95daff0801388324c8ecf5dc587b1c6f0097cd97a417f9e3d621845f894e'
+        }
+      ></TrainersCard>
+      <TrainersCard
+        name={'Benjamin'}
+        title={'Empowerment Coach'}
+        description={
+          'Transform your mindset and physique under the guidance of an empowerment coach. Cultivate self-confidence and resilience through personalized fitness routines and motivational support.'
+        }
+        img={
+          'https://img.freepik.com/free-photo/muscular-man-looking-dumbbell_1163-796.jpg?w=360&t=st=1700904008~exp=1700904608~hmac=cfc6717fae575519f3dd62f0adf62bc6302129bf96825a42d4996cb9464953bb'
+        }
+      ></TrainersCard>
+      <TrainersCard
+        name={'Christopher'}
+        title={'Holistic Health Specialist'}
+        description={
+          'Embrace a holistic approach to health with a specialist who integrates fitness, nutrition, and mindfulness. Achieve optimal well-being with personalized strategies for a balanced life.'
+        }
+        img={
+          'https://qph.cf2.quoracdn.net/main-qimg-5f67663d43e1dd4f72afd791d2d2a519-lq'
+        }
+      ></TrainersCard>
     </div>
   );
 };

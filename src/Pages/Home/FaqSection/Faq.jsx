@@ -12,7 +12,7 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 const Faq = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-around items-center gap-3">
+      <div className="flex flex-col md:flex-row justify-around items-center gap-3 mb-8">
         <div className="w-full md:w-1/2 flex flex-col gap-4">
           {/* 1st */}
           <Accordion allowZeroExpanded>
