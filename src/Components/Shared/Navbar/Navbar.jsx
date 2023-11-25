@@ -1,6 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+import Swal from 'sweetalert2';
+import DarkWhite from '../../DarkWhiteTheme/DarkWhite';
 
 const Navbar = () => {
+  const { logOut, user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logOut();
+    // Logged out
+    Swal.fire('Logged Out', 'Log Out Success', 'success');
+    navigate('/');
+  };
+
   const navElement = (
     <>
       <li>
@@ -47,6 +60,9 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navElement}</ul>
         </div>
         <div className="navbar-end">
+          <div className="mr-4 lg:mr-5">
+            <DarkWhite></DarkWhite>
+          </div>
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
