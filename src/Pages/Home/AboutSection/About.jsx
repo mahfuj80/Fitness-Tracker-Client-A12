@@ -2,7 +2,7 @@ import aboutImage from '../../../assets/images/About/about.jpg';
 
 const About = () => {
   return (
-    <div className="flex flex-col md:flex-row  dark:bg-gray-900 w-[100vw]">
+    <div className="flex flex-col md:flex-row  dark:bg-gray-900 w-full">
       <div className="w-full md:w-1/2">
         <img
           className="object-cover w-full h-full bg-no-repeat md:ml-8 rounded-lg"
