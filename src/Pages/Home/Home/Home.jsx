@@ -1,6 +1,7 @@
 import SectionTitle from '../../../Components/Shared/SectionTitle/SectionTitle';
 import Banner from '../Banner/Banner';
 import Faq from '../FaqSection/Faq';
+import Featured from '../FeaturedSection/Featured';
 import OurTrainers from '../OurBestTrainersSection/OurTrainers';
 import Review from '../ReviewSection/Review';
 
@@ -8,6 +9,17 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
+
+      {/* Featured Sections */}
+      <SectionTitle
+        shortTitle={'Featured'}
+        longTitle={'Our Featured Programs'}
+        description={
+          'Explore our curated Fitness Fusion: Sculpting Body and Mind series, showcasing transformative workouts, expert insights, and wellness inspiration for all.'
+        }
+      ></SectionTitle>
+      <Featured></Featured>
+
       {/* Review Section */}
       <SectionTitle
         shortTitle={'Review'}
