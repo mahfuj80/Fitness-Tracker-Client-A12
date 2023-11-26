@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import DarkWhite from '../../DarkWhiteTheme/DarkWhite';
+import { RiMenu2Line } from 'react-icons/ri';
 
 const Navbar = () => {
   const { logOut, user } = useAuth();
@@ -20,7 +21,16 @@ const Navbar = () => {
         <NavLink to={'/'}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={'/about'}>About</NavLink>
+        <NavLink to={'/gallery'}>Gallery</NavLink>
+      </li>
+      <li>
+        <NavLink to={'/trainer'}>Trainer</NavLink>
+      </li>
+      <li>
+        <NavLink to={'/classes'}>Classes</NavLink>
+      </li>
+      <li>
+        <NavLink to={'/community'}>Community</NavLink>
       </li>
     </>
   );
@@ -37,7 +47,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-200">
+      <div className="navbar bg-base-200 fixed z-20 max-w-screen-xl	mx-auto top-0">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -58,7 +68,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-semibold"
             >
               {navElement}
             </ul>
@@ -68,33 +78,44 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navElement}</ul>
+          <ul className="menu menu-horizontal px-1 font-semibold">
+            {navElement}
+          </ul>
         </div>
         <div className="navbar-end">
           <div className="mr-4 lg:mr-5">
             <DarkWhite></DarkWhite>
           </div>
+
           {user ? undefined : (
-            <ul className="menu menu-sm menu-horizontal">
+            <ul className="menu menu-sm menu-horizontal font-semibold">
               {loginAndLogOutButton}
             </ul>
           )}
           {user && (
             <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src={user?.photoURL} alt="Profile_Image" />
+              <label tabIndex={0} className="btn btn-ghost">
+                <RiMenu2Line size={25}></RiMenu2Line>
+                <div className="w-10 avatar">
+                  <img
+                    className="rounded-full"
+                    src={user?.photoURL}
+                    alt="Profile_Image"
+                  />
                 </div>
               </label>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60"
               >
                 <li>
                   <Link to={'/profile'} className="justify-between">
-                    {user?.displayName}
+                    {user?.displayName} Profile
                     <span className="badge">New</span>
                   </Link>
+                </li>
+                <li>
+                  <Link to={'/dashboard'}>Dashboard</Link>
                 </li>
                 <li>
                   <Link to={'/settings'}>Settings</Link>

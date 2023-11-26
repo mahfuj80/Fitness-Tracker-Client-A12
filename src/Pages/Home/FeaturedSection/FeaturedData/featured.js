@@ -30,9 +30,9 @@ const featuredItems = [
   {
     id: 4,
     img: img4,
-    title: 'Musculation',
+    title: 'Cycling',
     description:
-      'Optimize strength training with dynamic musculation workouts, emphasizing muscle isolation and optimal growth.',
+      'Optimize strength training with dynamic cycling workouts, emphasizing muscle isolation and optimal growth.',
   },
   {
     id: 5,
