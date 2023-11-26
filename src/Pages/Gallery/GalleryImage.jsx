@@ -13,20 +13,29 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import photos from './GalleryData/galleryData';
 import { useEffect } from 'react';
+import Loader from '../../Components/Shared/Loading/Loader';
 
 export default function GalleryImage() {
+  const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(-1);
   const [images, setImages] = useState([]);
   const [category, setCategory] = useState('');
   useEffect(() => {
     setImages(photos);
+    setLoading(false);
     if (category) {
+      setLoading(true);
       const filteredImages = photos.filter(
         (photo) => photo?.category === category
       );
       setImages(filteredImages);
+      setLoading(false);
     }
   }, [category]);
+
+  if (loading) {
+    return <Loader></Loader>;
+  }
 
   return (
     <>
