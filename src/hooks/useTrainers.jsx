@@ -1,9 +1,19 @@
+import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from './useAxiosPublic';
 
-const useTrainers = async () => {
-  const res = await useAxiosPublic.get('/trainers');
-  const data = res?.data;
-  return { data };
+const useTrainers = () => {
+  const axiosPublic = useAxiosPublic();
+  const {
+    data: trainers = [],
+    isPending: loading,
+    refetch,
+  } = useQuery({
+    queryKey: ['trainers'],
+    queryFn: async () => {
+      const res = await axiosPublic.get('/trainers');
+      return res?.data;
+    },
+  });
+  return [trainers, loading, refetch];
 };
-
 export default useTrainers;

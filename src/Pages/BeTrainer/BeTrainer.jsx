@@ -30,6 +30,7 @@ const BeTrainer = () => {
     const facebookLink = e.target.facebookLink.value;
     const instagramLink = e.target.instagramLink.value;
     const xLink = e.target.xLink.value;
+    const experience = e.target.experience.value;
 
     const motivation = e.target.motivation.checked;
     const flexibility = e.target.flexibility.checked;
@@ -62,6 +63,7 @@ const BeTrainer = () => {
       availableTimeInWeek,
       skills,
       title,
+      experience,
       socialLinks: {
         facebookLink,
         instagramLink,
@@ -246,27 +248,45 @@ const BeTrainer = () => {
                 required
               />
             </div>
-          </div>
-
-          {/* Email Read Only */}
-          <div className="mb-6">
-            <label
-              htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Email address
-            </label>
-            <input
-              type="email"
-              id="email"
-              defaultValue={user?.email}
-              disabled
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+            {/* Email Read Only */}
+            <div className="mb-6">
+              <label
+                htmlFor="email"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Email address (Read Only)
+              </label>
+              <input
+                type="email"
+                id="email"
+                defaultValue={user?.email}
+                disabled
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
              focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
               dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="john.doe@company.com"
-              required
-            />
+                placeholder="john.doe@company.com"
+                required
+              />
+            </div>
+            {/* Years Of Experience */}
+            <div>
+              <label
+                htmlFor="experience"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Years Of Experience
+              </label>
+              <input
+                type="number"
+                id="experience"
+                name="experience"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+               focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Years Of Experience"
+                required
+                max={100}
+              />
+            </div>
           </div>
           {/* Profile Image */}
           <div className="mb-6">

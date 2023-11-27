@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 import TrainerCard from '../../Components/TrainerPage/TrainerCard';
-import trainers from './TrainerData/TrainerData';
+import useTrainers from '../../hooks/useTrainers';
+import Loader from '../../Components/Shared/Loading/Loader';
 
 const Trainer = () => {
+  const [trainers, loading] = useTrainers();
+  if (loading) {
+    return <Loader></Loader>;
+  }
+
   return (
     <div className="py-4">
       <SectionTitle
@@ -14,8 +20,8 @@ const Trainer = () => {
         }
       ></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {trainers?.map((trainer, idx) => (
-          <TrainerCard key={idx} trainer={trainer}></TrainerCard>
+        {trainers?.map((trainer) => (
+          <TrainerCard key={trainer?._id} trainer={trainer}></TrainerCard>
         ))}
       </div>
       <div className="hero bg-base-200 mt-4  w-[90%] mx-auto md:w-[80%] rounded-lg">
