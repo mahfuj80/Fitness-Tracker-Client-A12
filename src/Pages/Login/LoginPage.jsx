@@ -2,7 +2,7 @@ import { useLottie } from 'lottie-react';
 import loginAnimation from './animation/login_animation.json';
 import Swal from 'sweetalert2';
 import { useEffect } from 'react';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/Auth/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import logo from '/logo.png';

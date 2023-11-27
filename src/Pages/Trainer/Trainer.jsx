@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 import TrainerCard from '../../Components/TrainerPage/TrainerCard';
-import useTrainers from '../../hooks/useTrainers';
+import useTrainers from '../../hooks/Trainers/useTrainers';
 import Loader from '../../Components/Shared/Loading/Loader';
 
 const Trainer = () => {

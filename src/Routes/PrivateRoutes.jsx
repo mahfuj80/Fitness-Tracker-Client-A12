@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../hooks/Auth/useAuth';
 import { Navigate, useLocation } from 'react-router-dom';
 import Loader from '../Components/Shared/Loading/Loader';
 

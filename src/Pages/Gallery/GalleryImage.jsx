@@ -12,7 +12,7 @@ import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import Loader from '../../Components/Shared/Loading/Loader';
-import useGallery from '../../hooks/useGallery';
+import useGallery from '../../hooks/Gallery/useGallery';
 
 export default function GalleryImage() {
   const [index, setIndex] = useState(-1);

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from './useAxiosPublic';
+import useAxiosPublic from '../Auth/useAxiosPublic';
 
 const useGallery = ({ category }) => {
   const axiosPublic = useAxiosPublic();

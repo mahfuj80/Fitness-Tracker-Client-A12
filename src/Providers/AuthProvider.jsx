@@ -13,7 +13,7 @@ import {
 } from 'firebase/auth';
 
 import { app } from '../Firebase/firebase.config';
-import useAxiosPublic from '../hooks/useAxiosPublic';
+import useAxiosPublic from '../hooks/Auth/useAxiosPublic';
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);

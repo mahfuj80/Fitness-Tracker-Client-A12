@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../../hooks/Auth/useAuth';
 import Swal from 'sweetalert2';
 import DarkWhite from '../../DarkWhiteTheme/DarkWhite';
 import { RiMenu2Line } from 'react-icons/ri';

@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast';
 import Loader from '../../Components/Shared/Loading/Loader';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/Auth/useAuth';
 
 const BeTrainer = () => {
   const { user, loading } = useAuth();

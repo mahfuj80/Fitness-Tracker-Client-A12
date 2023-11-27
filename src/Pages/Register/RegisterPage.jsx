@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/Auth/useAuth';
 import { useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { app } from '../../Firebase/firebase.config';
