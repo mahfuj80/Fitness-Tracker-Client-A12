@@ -12,6 +12,7 @@ import Profile from '../Pages/Profile/Profile';
 import Classes from '../Pages/Classes/Classes';
 import BeTrainer from '../Pages/BeTrainer/BeTrainer';
 import PrivetRoutes from './PrivateRoutes';
+import TrainerDetails from '../Pages/TrainerDetails/TrainerDetails';
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: '/trainer',
         element: <Trainer></Trainer>,
+      },
+      {
+        path: '/trainer/:id',
+        element: <TrainerDetails></TrainerDetails>,
       },
       {
         path: '/be-trainer',

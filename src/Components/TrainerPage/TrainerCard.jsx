@@ -14,9 +14,6 @@ const TrainerCard = ({ trainer }) => {
         <h5 className="mb-1 text-xl font-semibold text-gray-900 dark:text-white">
           {trainer?.name}
         </h5>
-        <span className="text-lg font-medium dark:text-gray-400">
-          {trainer?.title}
-        </span>
         <p className="text-gray-500 text-sm">
           {trainer?.experience} Of Experience
         </p>
@@ -112,6 +109,14 @@ const TrainerCard = ({ trainer }) => {
           <span className="w-6">7</span>
           <span className="w-6">8</span>
         </div>
+        <Link to={trainer?.name}>
+          <button
+            type="button"
+            className="text-white bg-gradient-to-r mt-2 from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
+          >
+            Know More
+          </button>
+        </Link>
       </div>
     </div>
   );
