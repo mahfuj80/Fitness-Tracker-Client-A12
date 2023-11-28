@@ -28,6 +28,7 @@ import TrainersRoutes from './TrainersRoutes';
 import ManageMembers from '../Pages/Dashboard/Trainers/ManageMembers/ManageMembers';
 import AddNewForum from '../Pages/Dashboard/Trainers/AddNewForum/AddNewForum';
 import AddNewClass from '../Pages/Dashboard/Trainers/AddNewClass/AddNewClass';
+import UserRoutes from './UserRoutes';
 
 export const router = createBrowserRouter([
   {
@@ -89,15 +90,33 @@ export const router = createBrowserRouter([
       // users Path
       {
         path: '/dashboard/user',
-        element: <UsersDashboard></UsersDashboard>,
+        element: (
+          <PrivetRoutes>
+            <UserRoutes>
+              <UsersDashboard></UsersDashboard>
+            </UserRoutes>
+          </PrivetRoutes>
+        ),
       },
       {
         path: '/dashboard/activity-logs',
-        element: <ActivityLog></ActivityLog>,
+        element: (
+          <PrivetRoutes>
+            <UserRoutes>
+              <ActivityLog></ActivityLog>
+            </UserRoutes>
+          </PrivetRoutes>
+        ),
       },
       {
         path: '/dashboard/recommended-classes',
-        element: <RecommendedClasses></RecommendedClasses>,
+        element: (
+          <PrivetRoutes>
+            <UserRoutes>
+              <RecommendedClasses></RecommendedClasses>
+            </UserRoutes>
+          </PrivetRoutes>
+        ),
       },
       // Trainers Path
       {
