@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../Auth/useAxiosPublic';
+import useAxiosPublic from '../Axios/useAxiosPublic';
 
 const useSingleTrainer = ({ id }) => {
   const axiosPublic = useAxiosPublic();

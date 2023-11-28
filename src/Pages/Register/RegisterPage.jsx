@@ -7,6 +7,7 @@ import logo from '/logo.png';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 import loginAnimation from './animation/login_animation.json';
 import { useLottie } from 'lottie-react';
+import useAxiosPublic from '../../hooks/Axios/useAxiosPublic';
 
 const RegisterPage = () => {
   const { user, createUser, updateUserProfile } = useAuth();
@@ -71,18 +72,47 @@ const RegisterPage = () => {
     console.log(name);
 
     createUser(email, password)
-      .then(() => {
-        updateUserProfile(name, image)
-          .then(() => {
-            // Signed in
-            Swal.fire('Logged In', 'You Successfully Logged In', 'success');
-            navigate(location?.state ? location.state : '/');
-          })
-          .catch((error) => {
-            // Handle Errors here.
-            const errorMessage = error.message;
-            Swal.fire('Something Went Wrong!!', `${errorMessage}`, 'error');
+      .then((result) => {
+        const loggedUser = result && result.user; // Check if result and result.user are defined
+        if (loggedUser) {
+          updateUserProfile(name, image)
+            .then(() => {
+              // create user entry in the database
+              const userInfo = {
+                name,
+                email,
+              };
+              console.log(userInfo);
+              useAxiosPublic.post('/users', userInfo).then((res) => {
+                if (res?.data?.insertedId) {
+                  console.log('user added to the database');
+                  e.reset();
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'User Successfully Created',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate(location?.state ? location.state : '/');
+                }
+              });
+            })
+            .catch((error) => {
+              // Handle Errors here.
+              const errorMessage = error.message;
+              Swal.fire('Something Went Wrong!!', `${errorMessage}`, 'error');
+            });
+        } else {
+          console.error('User is undefined in the result object');
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Error: User is undefined',
+            showConfirmButton: false,
+            timer: 1500,
           });
+        }
       })
       .catch((error) => {
         // Handle Errors here.

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import useAxiosPublic from '../../../hooks/Auth/useAxiosPublic';
 import toast from 'react-hot-toast';
+import useAxiosPublic from '../../../hooks/Axios/useAxiosPublic';
 
 const Newsletter = () => {
   const axiosPublic = useAxiosPublic();
