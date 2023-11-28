@@ -21,6 +21,13 @@ import RecommendedClasses from '../Pages/Dashboard/Users/RecommendedClasses/Reco
 import AllSubscribers from '../Pages/Dashboard/Admin/AllSubscribers/AllSubscribers';
 import AllTrainers from '../Pages/Dashboard/Admin/AllTrainers/AllTrainers';
 import AppliedTrainers from '../Pages/Dashboard/Admin/AppliedTrainers/AppliedTrainers';
+import AdminRoutes from './AdminRoutes';
+import Balance from '../Pages/Dashboard/Admin/Balance/Balance';
+import ManageSlots from '../Pages/Dashboard/Trainers/ManageSlots/ManageSlots';
+import TrainersRoutes from './TrainersRoutes';
+import ManageMembers from '../Pages/Dashboard/Trainers/ManageMembers/ManageMembers';
+import AddNewForum from '../Pages/Dashboard/Trainers/AddNewForum/AddNewForum';
+import AddNewClass from '../Pages/Dashboard/Trainers/AddNewClass/AddNewClass';
 
 export const router = createBrowserRouter([
   {
@@ -95,46 +102,106 @@ export const router = createBrowserRouter([
       // Trainers Path
       {
         path: '/dashboard/trainer',
-        element: <TrainersDashboard></TrainersDashboard>,
+        element: (
+          <PrivetRoutes>
+            <TrainersRoutes>
+              <TrainersDashboard></TrainersDashboard>
+            </TrainersRoutes>
+          </PrivetRoutes>
+        ),
       },
       {
         path: '/dashboard/add-new-class',
-        element: <TrainersDashboard></TrainersDashboard>,
+        element: (
+          <PrivetRoutes>
+            <TrainersRoutes>
+              <AddNewClass></AddNewClass>
+            </TrainersRoutes>
+          </PrivetRoutes>
+        ),
       },
       {
         path: '/dashboard/add-new-forum',
-        element: <TrainersDashboard></TrainersDashboard>,
+        element: (
+          <PrivetRoutes>
+            <TrainersRoutes>
+              <AddNewForum></AddNewForum>
+            </TrainersRoutes>
+          </PrivetRoutes>
+        ),
       },
       {
         path: '/dashboard/manage-members',
-        element: <TrainersDashboard></TrainersDashboard>,
+        element: (
+          <PrivetRoutes>
+            <TrainersRoutes>
+              <ManageMembers></ManageMembers>
+            </TrainersRoutes>
+          </PrivetRoutes>
+        ),
       },
 
       {
         path: '/dashboard/manage-slots',
-        element: <TrainersDashboard></TrainersDashboard>,
+        element: (
+          <PrivetRoutes>
+            <TrainersRoutes>
+              <ManageSlots></ManageSlots>
+            </TrainersRoutes>
+          </PrivetRoutes>
+        ),
       },
 
       //Admin Path
       {
         path: '/dashboard/admin',
-        element: <AdminDashboard></AdminDashboard>,
+        element: (
+          <PrivetRoutes>
+            <AdminRoutes>
+              <AdminDashboard></AdminDashboard>
+            </AdminRoutes>
+          </PrivetRoutes>
+        ),
       },
       {
         path: '/dashboard/all-subscribers',
-        element: <AllSubscribers></AllSubscribers>,
+        element: (
+          <PrivetRoutes>
+            <AdminRoutes>
+              <AllSubscribers></AllSubscribers>
+            </AdminRoutes>
+          </PrivetRoutes>
+        ),
       },
       {
         path: '/dashboard/all-trainers',
-        element: <AllTrainers></AllTrainers>,
+        element: (
+          <PrivetRoutes>
+            <AdminRoutes>
+              <AllTrainers></AllTrainers>
+            </AdminRoutes>
+          </PrivetRoutes>
+        ),
       },
       {
         path: '/dashboard/applied-trainers',
-        element: <AppliedTrainers></AppliedTrainers>,
+        element: (
+          <PrivetRoutes>
+            <AdminRoutes>
+              <AppliedTrainers></AppliedTrainers>
+            </AdminRoutes>
+          </PrivetRoutes>
+        ),
       },
       {
         path: '/dashboard/balance',
-        element: <AdminDashboard></AdminDashboard>,
+        element: (
+          <PrivetRoutes>
+            <AdminRoutes>
+              <Balance></Balance>
+            </AdminRoutes>
+          </PrivetRoutes>
+        ),
       },
     ],
   },
