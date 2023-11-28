@@ -105,8 +105,8 @@ const Dashboard = () => {
       </li>
 
       <li className="font-semibold dark:hover:bg-gray-700 rounded-lg">
-        <NavLink to={'/dashboard/add-new-class'}>
-          <RiDashboardFill></RiDashboardFill>My Class
+        <NavLink to={'/dashboard/my-classes'}>
+          <RiDashboardFill></RiDashboardFill>My Classes
         </NavLink>
       </li>
     </>

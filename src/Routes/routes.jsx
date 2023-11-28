@@ -29,6 +29,8 @@ import ManageMembers from '../Pages/Dashboard/Trainers/ManageMembers/ManageMembe
 import AddNewForum from '../Pages/Dashboard/Trainers/AddNewForum/AddNewForum';
 import AddNewClass from '../Pages/Dashboard/Trainers/AddNewClass/AddNewClass';
 import UserRoutes from './UserRoutes';
+import MyClasses from '../Pages/Dashboard/Users/MyClasses/MyClasses';
+import PaymentDetails from '../Pages/Dashboard/Users/PaymentDetails/PaymentDetails';
 
 export const router = createBrowserRouter([
   {
@@ -114,6 +116,26 @@ export const router = createBrowserRouter([
           <PrivetRoutes>
             <UserRoutes>
               <RecommendedClasses></RecommendedClasses>
+            </UserRoutes>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: '/dashboard/my-classes',
+        element: (
+          <PrivetRoutes>
+            <UserRoutes>
+              <MyClasses></MyClasses>
+            </UserRoutes>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: '/dashboard/payment-details',
+        element: (
+          <PrivetRoutes>
+            <UserRoutes>
+              <PaymentDetails></PaymentDetails>
             </UserRoutes>
           </PrivetRoutes>
         ),
