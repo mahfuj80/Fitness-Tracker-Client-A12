@@ -13,6 +13,14 @@ import Classes from '../Pages/Classes/Classes';
 import BeTrainer from '../Pages/BeTrainer/BeTrainer';
 import PrivetRoutes from './PrivateRoutes';
 import TrainerDetails from '../Pages/TrainerDetails/TrainerDetails';
+import AdminDashboard from '../Pages/Dashboard/Admin/AdminDashboard/AdminDashboard';
+import UsersDashboard from '../Pages/Dashboard/Users/UsersDashboard/UsersDashboard';
+import TrainersDashboard from '../Pages/Dashboard/Trainers/TrainersDashboard/TrainersDashboard';
+import ActivityLog from '../Pages/Dashboard/Users/ActivityLog/ActivityLog';
+import RecommendedClasses from '../Pages/Dashboard/Users/RecommendedClasses/RecommendedClasses';
+import AllSubscribers from '../Pages/Dashboard/Admin/AllSubscribers/AllSubscribers';
+import AllTrainers from '../Pages/Dashboard/Admin/AllTrainers/AllTrainers';
+import AppliedTrainers from '../Pages/Dashboard/Admin/AppliedTrainers/AppliedTrainers';
 
 export const router = createBrowserRouter([
   {
@@ -71,9 +79,62 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+      // users Path
       {
         path: '/dashboard/user',
-        element: <Gallery></Gallery>,
+        element: <UsersDashboard></UsersDashboard>,
+      },
+      {
+        path: '/dashboard/activity-logs',
+        element: <ActivityLog></ActivityLog>,
+      },
+      {
+        path: '/dashboard/recommended-classes',
+        element: <RecommendedClasses></RecommendedClasses>,
+      },
+      // Trainers Path
+      {
+        path: '/dashboard/trainer',
+        element: <TrainersDashboard></TrainersDashboard>,
+      },
+      {
+        path: '/dashboard/add-new-class',
+        element: <TrainersDashboard></TrainersDashboard>,
+      },
+      {
+        path: '/dashboard/add-new-forum',
+        element: <TrainersDashboard></TrainersDashboard>,
+      },
+      {
+        path: '/dashboard/manage-members',
+        element: <TrainersDashboard></TrainersDashboard>,
+      },
+
+      {
+        path: '/dashboard/manage-slots',
+        element: <TrainersDashboard></TrainersDashboard>,
+      },
+
+      //Admin Path
+      {
+        path: '/dashboard/admin',
+        element: <AdminDashboard></AdminDashboard>,
+      },
+      {
+        path: '/dashboard/all-subscribers',
+        element: <AllSubscribers></AllSubscribers>,
+      },
+      {
+        path: '/dashboard/all-trainers',
+        element: <AllTrainers></AllTrainers>,
+      },
+      {
+        path: '/dashboard/applied-trainers',
+        element: <AppliedTrainers></AppliedTrainers>,
+      },
+      {
+        path: '/dashboard/balance',
+        element: <AdminDashboard></AdminDashboard>,
       },
     ],
   },
