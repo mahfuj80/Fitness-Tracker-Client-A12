@@ -3,16 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/Auth/useAuth';
 import { useEffect } from 'react';
-import { getAuth } from 'firebase/auth';
-import { app } from '../../Firebase/firebase.config';
 import logo from '/logo.png';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 import loginAnimation from './animation/login_animation.json';
 import { useLottie } from 'lottie-react';
 
 const RegisterPage = () => {
-  const auth = getAuth(app);
-  const { user, createUser, updateProfile } = useAuth();
+  const { user, createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -71,12 +68,11 @@ const RegisterPage = () => {
     //   return;
     // }
 
+    console.log(name);
+
     createUser(email, password)
       .then(() => {
-        updateProfile(auth.currentUser, {
-          displayName: name,
-          photoURL: image,
-        })
+        updateUserProfile(name, image)
           .then(() => {
             // Signed in
             Swal.fire('Logged In', 'You Successfully Logged In', 'success');

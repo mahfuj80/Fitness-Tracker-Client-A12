@@ -11,7 +11,7 @@ import { FaGithub } from 'react-icons/fa';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 
 const LoginPage = () => {
-  const { googleSignIn, githubSignIn, loginUser } = useAuth();
+  const { googleSignIn, githubSignIn, signIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
@@ -36,7 +36,7 @@ const LoginPage = () => {
     const form = new FormData(e.currentTarget);
     const email = form.get('email');
     const password = form.get('password');
-    loginUser(email, password)
+    signIn(email, password)
       .then(() => {
         // Signed in
         Swal.fire('Logged In', 'You Successfully Logged In', 'success');

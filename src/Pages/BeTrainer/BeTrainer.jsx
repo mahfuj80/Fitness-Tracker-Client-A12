@@ -10,6 +10,8 @@ const BeTrainer = () => {
     let skills = [];
     const agree = e.target.agree.checked;
     const title = e.target.title.value;
+    const startTime = e.target.startTime.value;
+    const endTime = e.target.endTime.value;
 
     if (!agree) {
       toast.error('Please Accept The Trams And Condition');
@@ -21,10 +23,49 @@ const BeTrainer = () => {
       return;
     }
 
+    if (startTime === '0') {
+      toast.error('Please Select start Time');
+      return;
+    }
+
+    if (endTime === '0') {
+      toast.error('Please Select End Time');
+      return;
+    }
+
+    // Assuming the time format is in 12-hour format with AM/PM
+    // Extract hours, minutes, and AM/PM
+    const [startHour, startMinute, startPeriod] = startTime.split(/:|\s/);
+    const [endHour, endMinute, endPeriod] = endTime.split(/:|\s/);
+
+    // Convert hours to 24-hour format
+    const startHour24 =
+      startPeriod.toLowerCase() === 'pm'
+        ? parseInt(startHour, 10) + 12
+        : parseInt(startHour, 10);
+    const endHour24 =
+      endPeriod.toLowerCase() === 'pm'
+        ? parseInt(endHour, 10) + 12
+        : parseInt(endHour, 10);
+
+    // Calculate the difference in hours and minutes
+    let availableTimeInDay = endHour24 - startHour24;
+    let minuteDiff = parseInt(endMinute, 10) - parseInt(startMinute, 10);
+
+    // Adjust for negative differences (e.g., crossing over to the next day)
+    if (minuteDiff < 0) {
+      availableTimeInDay--;
+      minuteDiff += 60;
+    }
+
+    console.log(
+      `The difference between ${startTime} and ${endTime} is ${availableTimeInDay} hours and ${minuteDiff} minutes.`
+    );
+
     const fullName = e.target.fullName.value;
     const age = e.target.age.value;
     const email = e.target.email.value;
-    const availableTimeInDay = e.target.availableTimeInDay.value;
+
     const availableTimeInWeek = e.target.availableTimeInWeek.value;
     const profileImage = e.target.profileImage.value;
     const facebookLink = e.target.facebookLink.value;
@@ -59,6 +100,8 @@ const BeTrainer = () => {
       email,
       age,
       profileImage,
+      startTime,
+      endTime,
       availableTimeInDay,
       availableTimeInWeek,
       skills,
@@ -70,9 +113,9 @@ const BeTrainer = () => {
         xLink,
       },
     };
-
     console.log(trainerInfo);
   };
+
   if (loading) {
     return <Loader></Loader>;
   }
@@ -126,24 +169,54 @@ const BeTrainer = () => {
               />
             </div>
             {/* Available Time In a Day */}
-            <div>
-              <label
-                htmlFor="availableTimeInDay"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Available Time In a Day (Hour)
-              </label>
-              <input
-                name="availableTimeInDay"
-                type="number"
-                id="availableTimeInDay"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-               focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="01-08"
-                min={1}
-                max={8}
-                required
-              />
+            <div className="flex w-full justify-between gap-4">
+              <div className="w-1/2">
+                <label
+                  htmlFor="startTime"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  You Can Tran From
+                </label>
+                <select
+                  id="startTime"
+                  name="startTime"
+                  required
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected value={0}>
+                    Your Training Start at
+                  </option>
+                  <option value="4:00 am">4:00 am</option>
+                  <option value="5:00 am">5:00 am</option>
+                  <option value="5:00 pm">5:00 pm</option>
+                  <option value="5:00 pm">6:00 pm</option>
+                </select>
+              </div>
+              <div className="w-1/2">
+                <label
+                  htmlFor="endTime"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  To
+                </label>
+                <select
+                  id="endTime"
+                  name="endTime"
+                  required
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected value={0}>
+                    Your Training End at
+                  </option>
+                  <option value="7:00 am">7:00 am</option>
+                  <option value="8:00 am">8:00 am</option>
+                  <option value="9:00 am">9:00 am</option>
+                  <option value="10:00 am">10:00 am</option>
+                  <option value="8:00 pm">8:00 pm</option>
+                  <option value="9:00 pm">9:00 pm</option>
+                  <option value="10:00 pm">10:00 pm</option>
+                </select>
+              </div>
             </div>
             {/* Available Time In a week */}
             <div>
