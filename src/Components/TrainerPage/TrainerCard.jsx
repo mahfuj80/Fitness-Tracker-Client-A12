@@ -43,6 +43,14 @@ const TrainerCard = ({ trainer }) => {
         <div>
           <div className="mt-2">
             <p className="w-fit mx-auto">Available Time in Hour</p>
+            <div className="flex gap-2 w-fit mx-auto">
+              <p>
+                From: <span className="font-bold">{trainer?.startTime}</span>
+              </p>
+              <p>
+                To: <span className="font-bold">{trainer?.endTime}</span>
+              </p>
+            </div>
             <div className="flex h-3 px-8">
               <div
                 className={
