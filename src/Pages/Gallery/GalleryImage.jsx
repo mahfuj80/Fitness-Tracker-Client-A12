@@ -37,8 +37,8 @@ export default function GalleryImage() {
             and tag us to get featured on our timeline
           </p>
         </div>
-        <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 w-fit mx-auto mb-8">
-          <li className="me-2">
+        <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 w-fit mx-auto mb-8 items-center justify-center">
+          <li className="m-2">
             <button
               onClick={() => setCategory('')}
               className={
@@ -51,7 +51,7 @@ export default function GalleryImage() {
               All
             </button>
           </li>
-          <li className="me-2">
+          <li className="m-2">
             <button
               onClick={() => setCategory('cycling')}
               className={
@@ -77,7 +77,7 @@ export default function GalleryImage() {
               Yoga
             </button>
           </li>
-          <li className="me-2">
+          <li className="m-2">
             <button
               onClick={() => setCategory('musculation')}
               className={
@@ -90,7 +90,7 @@ export default function GalleryImage() {
               Musculation
             </button>
           </li>
-          <li className="me-2">
+          <li className="m-2">
             <button
               onClick={() => setCategory('running')}
               className={
@@ -103,7 +103,7 @@ export default function GalleryImage() {
               Running
             </button>
           </li>
-          <li className="me-2">
+          <li className="m-2">
             <button
               onClick={() => setCategory('bodyBuilding')}
               className={
@@ -116,7 +116,7 @@ export default function GalleryImage() {
               Body Building
             </button>
           </li>
-          <li className="me-2">
+          <li className="m-2">
             <button
               onClick={() => setCategory('weightLifting')}
               className={
