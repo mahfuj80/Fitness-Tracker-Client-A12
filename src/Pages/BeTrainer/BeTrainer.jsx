@@ -3,17 +3,19 @@ import Loader from '../../Components/Shared/Loading/Loader';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 import useAuth from '../../hooks/Auth/useAuth';
 import useAxiosSecure from '../../hooks/Axios/useAxiosSecure';
+import Swal from 'sweetalert2';
+import BeTrainerFormCategory from '../../Components/BeTrainer/BeTrainerFormCategory';
 
 const BeTrainer = () => {
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
+
   const handleBeTrainerForm = (e) => {
     e.preventDefault();
     let skills = [];
+    let classes = [];
     const agree = e.target.agree.checked;
     const title = e.target.title.value;
-    const startTime = e.target.startTime.value;
-    const endTime = e.target.endTime.value;
 
     if (!agree) {
       toast.error('Please Accept The Trams And Condition');
@@ -25,56 +27,13 @@ const BeTrainer = () => {
       return;
     }
 
-    if (startTime === '0') {
-      toast.error('Please Select start Time');
-      return;
-    }
-
-    if (endTime === '0') {
-      toast.error('Please Select End Time');
-      return;
-    }
-
-    // Assuming the time format is in 12-hour format with AM/PM
-    // Extract hours, minutes, and AM/PM
-    const [startHour, startMinute, startPeriod] = startTime.split(/:|\s/);
-    const [endHour, endMinute, endPeriod] = endTime.split(/:|\s/);
-
-    // Convert hours to 24-hour format
-    const startHour24 =
-      startPeriod.toLowerCase() === 'pm'
-        ? parseInt(startHour, 10) + 12
-        : parseInt(startHour, 10);
-    const endHour24 =
-      endPeriod.toLowerCase() === 'pm'
-        ? parseInt(endHour, 10) + 12
-        : parseInt(endHour, 10);
-
-    // Calculate the difference in hours and minutes
-    let availableTimeInDay = endHour24 - startHour24;
-    let minuteDiff = parseInt(endMinute, 10) - parseInt(startMinute, 10);
-
-    // Adjust for negative differences (e.g., crossing over to the next day)
-    if (minuteDiff < 0) {
-      availableTimeInDay--;
-      minuteDiff += 60;
-    }
-
-    console.log(
-      `The difference between ${startTime} and ${endTime} is ${availableTimeInDay} hours and ${minuteDiff} minutes.`
-    );
-
     const fullName = e.target.fullName.value;
     const age = e.target.age.value;
     const email = e.target.email.value;
-
-    const availableTimeInWeek = availableTimeInDay * 5;
-    const profileImage = e.target.profileImage.value;
     const facebookLink = e.target.facebookLink.value;
     const instagramLink = e.target.instagramLink.value;
     const xLink = e.target.xLink.value;
     const experience = e.target.experience.value;
-
     const motivation = e.target.motivation.checked;
     const flexibility = e.target.flexibility.checked;
     const instruction = e.target.instruction.checked;
@@ -97,30 +56,151 @@ const BeTrainer = () => {
       skills.push(expertise);
     }
 
+    const isCycling = e.target.cycling.checked;
+    const isRunning = e.target.running.checked;
+    const isYoga = e.target.yoga.checked;
+    const isWeightLifting = e.target.weightLifting.checked;
+    const isBodyBuilding = e.target.bodyBuilding.checked;
+    const isMusculation = e.target.musculation.checked;
+
+    if (
+      !isCycling &&
+      !isRunning &&
+      !isYoga &&
+      !isWeightLifting &&
+      !isBodyBuilding &&
+      !isMusculation
+    ) {
+      return Swal.fire({
+        title: 'Error',
+        text: 'You Did not Select Any Category For Training!!!',
+        icon: 'error',
+      });
+    }
+    if (isCycling) {
+      const category = 'Cycling';
+      const startTime = e.target.cyclingStartTime.value;
+      const endTime = e.target.cyclingEndTime.value;
+      if (startTime === '0' || endTime === '0') {
+        return toast.error('You Checked Cycling But did not Select time');
+      }
+      let cycling = {
+        category,
+        startTime,
+        endTime,
+      };
+      classes.push(cycling);
+    }
+    if (isRunning) {
+      const category = 'Running';
+      const startTime = e.target.runningStartTime.value;
+      const endTime = e.target.runningEndTime.value;
+      if (startTime === '0' || endTime === '0') {
+        return toast.error('You Checked Cycling But did not Select time');
+      }
+      let running = {
+        category,
+        startTime,
+        endTime,
+      };
+      classes.push(running);
+    }
+
+    if (isBodyBuilding) {
+      const category = 'bodyBuilding';
+      const startTime = e.target.bodyBuildingStartTime.value;
+      const endTime = e.target.bodyBuildingEndTime.value;
+      if (startTime === '0' || endTime === '0') {
+        return toast.error('You Checked Body Building But did not Select time');
+      }
+      let bodyBuilding = {
+        category,
+        startTime,
+        endTime,
+      };
+      classes.push(bodyBuilding);
+    }
+
+    if (isMusculation) {
+      const category = 'Musculation';
+      const startTime = e.target.musculationStartTime.value;
+      const endTime = e.target.musculationEndTime.value;
+      if (startTime === '0' || endTime === '0') {
+        return toast.error('You Checked Musculation But did not Select time');
+      }
+      let musculation = {
+        category,
+        startTime,
+        endTime,
+      };
+      classes.push(musculation);
+    }
+    if (isWeightLifting) {
+      const category = 'Weight Lifting';
+      const startTime = e.target.weightLiftingStartTime.value;
+      const endTime = e.target.weightLiftingEndTime.value;
+      if (startTime === '0' || endTime === '0') {
+        return toast.error(
+          'You Checked Weight Lifting But did not Select time'
+        );
+      }
+      let weightLifting = {
+        category,
+        startTime,
+        endTime,
+      };
+      classes.push(weightLifting);
+    }
+
+    if (isYoga) {
+      const category = 'Yoga';
+      const startTime = e.target.yogaStartTime.value;
+      const endTime = e.target.yogaEndTime.value;
+      if (startTime === '0' || endTime === '0') {
+        return toast.error('You Checked Yoga But did not Select time');
+      }
+      let yoga = {
+        category,
+        startTime,
+        endTime,
+      };
+      classes.push(yoga);
+    }
+
+    console.log(classes);
+
     const trainerInfo = {
       fullName,
       email,
       age,
-      profileImage,
-      startTime,
-      endTime,
-      availableTimeInDay,
-      availableTimeInWeek,
+      profileImage: user?.photoURL,
       skills,
       title,
       experience,
+      classes,
       socialLinks: {
         facebookLink,
         instagramLink,
         xLink,
       },
     };
-    axiosSecure.post('/trainers', trainerInfo).then((res) => {
-      console.log(res.data);
-      if (res?.data?.acknowledged) {
-        toast.success('Successfully Applied, Wait For Conformation');
-      } else if (res?.data?.message === 'exists') {
-        toast.error('You Already applied');
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Please Recheck Your Form You can be Reject.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.post('/trainers', trainerInfo).then((res) => {
+          if (res?.data?.acknowledged) {
+            toast.success('Successfully Applied, Wait For Conformation');
+          } else if (res?.data?.message === 'exists') {
+            toast.error('You Already applied');
+          }
+        });
       }
     });
   };
@@ -139,7 +219,7 @@ const BeTrainer = () => {
       ></SectionTitle>
       <div className="pb-12">
         <form onSubmit={handleBeTrainerForm} className="px-4">
-          <div className="grid gap-6 mb-6 md:grid-cols-2 ">
+          <div className="grid gap-6 mb-2 md:grid-cols-2 ">
             {/* Full Name */}
             <div>
               <label
@@ -177,57 +257,6 @@ const BeTrainer = () => {
                 required
               />
             </div>
-            {/* Available Time In a Day */}
-
-            <div>
-              <label
-                htmlFor="startTime"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                You Can Tran From
-              </label>
-              <select
-                id="startTime"
-                name="startTime"
-                required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              >
-                <option selected value={0}>
-                  Your Training Start at
-                </option>
-                <option value="4:00 am">4:00 am</option>
-                <option value="5:00 am">5:00 am</option>
-                <option value="5:00 pm">5:00 pm</option>
-                <option value="5:00 pm">6:00 pm</option>
-              </select>
-            </div>
-
-            {/* Available Time In a week */}
-            <div>
-              <label
-                htmlFor="endTime"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                To
-              </label>
-              <select
-                id="endTime"
-                name="endTime"
-                required
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              >
-                <option selected value={0}>
-                  Your Training End at
-                </option>
-                <option value="7:00 am">7:00 am</option>
-                <option value="8:00 am">8:00 am</option>
-                <option value="9:00 am">9:00 am</option>
-                <option value="10:00 am">10:00 am</option>
-                <option value="8:00 pm">8:00 pm</option>
-                <option value="9:00 pm">9:00 pm</option>
-                <option value="10:00 pm">10:00 pm</option>
-              </select>
-            </div>
             {/* Title */}
             <div>
               <label
@@ -239,12 +268,11 @@ const BeTrainer = () => {
               <select
                 id="title"
                 name="title"
+                defaultValue={'0'}
                 required
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected value={0}>
-                  Choose Your Title
-                </option>
+                <option value={'0'}>Choose Your Title</option>
                 <option value="Fitness Architect">Fitness Architect</option>
                 <option value="Strength Specialist">Strength Specialist</option>
                 <option value="Wellness Coach">Wellness Coach</option>
@@ -351,25 +379,6 @@ const BeTrainer = () => {
               />
             </div>
           </div>
-          {/* Profile Image */}
-          <div className="mb-6">
-            <label
-              htmlFor="profileImage"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Profile Image URL
-            </label>
-            <input
-              type="text"
-              id="profileImage"
-              defaultValue={user?.photoURL}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-             focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-              dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="url"
-              required
-            />
-          </div>
           {/* Skills */}
           <div>
             <h3 className="mb-4 font-semibold text-gray-900 dark:text-white">
@@ -447,6 +456,47 @@ const BeTrainer = () => {
             </ul>
           </div>
 
+          {/* Select Which Category You Can Train Our Students */}
+          <p className="text-center font-bold mt-8 text-xl">
+            Select Which Category You Want to Train Our Students
+          </p>
+          <div className="grid gap-6 mb-6 md:grid-cols-2  mt-4">
+            {/* Cycling */}
+            <BeTrainerFormCategory
+              name={'cycling'}
+              title={'Cycling'}
+            ></BeTrainerFormCategory>
+
+            {/* Running */}
+            <BeTrainerFormCategory
+              title={'Running'}
+              name={'running'}
+            ></BeTrainerFormCategory>
+
+            {/* Body Building */}
+            <BeTrainerFormCategory
+              title={'Body Building'}
+              name={'bodyBuilding'}
+            ></BeTrainerFormCategory>
+
+            {/* Musculation */}
+            <BeTrainerFormCategory
+              title={'Musculation'}
+              name={'musculation'}
+            ></BeTrainerFormCategory>
+
+            {/* Weight Lifting */}
+            <BeTrainerFormCategory
+              title={'Weight Lifting'}
+              name={'weightLifting'}
+            ></BeTrainerFormCategory>
+
+            {/* Yoga */}
+            <BeTrainerFormCategory
+              title={'Classic Yoga'}
+              name={'yoga'}
+            ></BeTrainerFormCategory>
+          </div>
           {/* Trams And Condition */}
           <div className="flex items-start my-6">
             <div className="flex items-center h-5">

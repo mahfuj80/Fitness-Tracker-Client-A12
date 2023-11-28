@@ -17,6 +17,7 @@ const SocialLogin = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
           image: result?.user?.photoURL,
+          role: 'user',
         };
         axiosPublic.post('/users', userInfo).then((res) => {
           Swal.fire('Logged In', 'You Successfully Logged In', 'success');
@@ -39,6 +40,7 @@ const SocialLogin = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
           image: result?.user?.photoURL,
+          role: 'user',
         };
         axiosPublic.post('/users', userInfo).then((res) => {
           Swal.fire('Logged In', 'You Successfully Logged In', 'success');

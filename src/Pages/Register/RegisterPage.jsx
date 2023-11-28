@@ -84,6 +84,7 @@ const RegisterPage = () => {
                 name,
                 email,
                 image,
+                role: 'user',
               };
               console.log(userInfo);
               axiosPublic.post('/users', userInfo).then((res) => {
