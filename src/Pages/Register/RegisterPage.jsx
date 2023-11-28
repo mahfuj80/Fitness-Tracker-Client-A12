@@ -7,10 +7,11 @@ import logo from '/logo.png';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 import loginAnimation from './animation/login_animation.json';
 import { useLottie } from 'lottie-react';
-import useAxiosPublic from '../../hooks/Axios/useAxiosPublic';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
+import useAxiosPublic from '../../hooks/Axios/useAxiosPublic';
 
 const RegisterPage = () => {
+  const axiosPublic = useAxiosPublic();
   const { user, createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
 
@@ -82,12 +83,12 @@ const RegisterPage = () => {
               const userInfo = {
                 name,
                 email,
+                image,
               };
               console.log(userInfo);
-              useAxiosPublic.post('/users', userInfo).then((res) => {
+              axiosPublic.post('/users', userInfo).then((res) => {
                 if (res?.data?.insertedId) {
                   console.log('user added to the database');
-                  e.reset();
                   Swal.fire({
                     position: 'top-end',
                     icon: 'success',

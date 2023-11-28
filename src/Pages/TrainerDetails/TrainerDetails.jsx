@@ -6,7 +6,6 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa6';
 const TrainerDetails = () => {
   const { id } = useParams();
   const [trainer, loading] = useSingleTrainer({ id });
-  console.log(trainer);
   if (loading) {
     return <Loader></Loader>;
   }

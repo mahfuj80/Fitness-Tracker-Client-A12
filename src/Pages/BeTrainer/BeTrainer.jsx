@@ -2,9 +2,11 @@ import toast from 'react-hot-toast';
 import Loader from '../../Components/Shared/Loading/Loader';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 import useAuth from '../../hooks/Auth/useAuth';
+import useAxiosSecure from '../../hooks/Axios/useAxiosSecure';
 
 const BeTrainer = () => {
   const { user, loading } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const handleBeTrainerForm = (e) => {
     e.preventDefault();
     let skills = [];
@@ -66,7 +68,7 @@ const BeTrainer = () => {
     const age = e.target.age.value;
     const email = e.target.email.value;
 
-    const availableTimeInWeek = e.target.availableTimeInWeek.value;
+    const availableTimeInWeek = availableTimeInDay * 5;
     const profileImage = e.target.profileImage.value;
     const facebookLink = e.target.facebookLink.value;
     const instagramLink = e.target.instagramLink.value;
@@ -113,7 +115,14 @@ const BeTrainer = () => {
         xLink,
       },
     };
-    console.log(trainerInfo);
+    axiosSecure.post('/trainers', trainerInfo).then((res) => {
+      console.log(res.data);
+      if (res?.data?.acknowledged) {
+        toast.success('Successfully Applied, Wait For Conformation');
+      } else if (res?.data?.message === 'exists') {
+        toast.error('You Already applied');
+      }
+    });
   };
 
   if (loading) {
@@ -169,74 +178,55 @@ const BeTrainer = () => {
               />
             </div>
             {/* Available Time In a Day */}
-            <div className="flex w-full justify-between gap-4">
-              <div className="w-1/2">
-                <label
-                  htmlFor="startTime"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  You Can Tran From
-                </label>
-                <select
-                  id="startTime"
-                  name="startTime"
-                  required
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected value={0}>
-                    Your Training Start at
-                  </option>
-                  <option value="4:00 am">4:00 am</option>
-                  <option value="5:00 am">5:00 am</option>
-                  <option value="5:00 pm">5:00 pm</option>
-                  <option value="5:00 pm">6:00 pm</option>
-                </select>
-              </div>
-              <div className="w-1/2">
-                <label
-                  htmlFor="endTime"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  To
-                </label>
-                <select
-                  id="endTime"
-                  name="endTime"
-                  required
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected value={0}>
-                    Your Training End at
-                  </option>
-                  <option value="7:00 am">7:00 am</option>
-                  <option value="8:00 am">8:00 am</option>
-                  <option value="9:00 am">9:00 am</option>
-                  <option value="10:00 am">10:00 am</option>
-                  <option value="8:00 pm">8:00 pm</option>
-                  <option value="9:00 pm">9:00 pm</option>
-                  <option value="10:00 pm">10:00 pm</option>
-                </select>
-              </div>
+
+            <div>
+              <label
+                htmlFor="startTime"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                You Can Tran From
+              </label>
+              <select
+                id="startTime"
+                name="startTime"
+                required
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected value={0}>
+                  Your Training Start at
+                </option>
+                <option value="4:00 am">4:00 am</option>
+                <option value="5:00 am">5:00 am</option>
+                <option value="5:00 pm">5:00 pm</option>
+                <option value="5:00 pm">6:00 pm</option>
+              </select>
             </div>
+
             {/* Available Time In a week */}
             <div>
               <label
-                htmlFor="availableTimeInWeek"
+                htmlFor="endTime"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Available Time In a Week (Hour)
+                To
               </label>
-              <input
-                name="availableTimeInWeek"
-                type="number"
-                id="availableTimeInWeek"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-               focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="01-56"
-                max={56}
-                min={4}
+              <select
+                id="endTime"
+                name="endTime"
                 required
-              />
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected value={0}>
+                  Your Training End at
+                </option>
+                <option value="7:00 am">7:00 am</option>
+                <option value="8:00 am">8:00 am</option>
+                <option value="9:00 am">9:00 am</option>
+                <option value="10:00 am">10:00 am</option>
+                <option value="8:00 pm">8:00 pm</option>
+                <option value="9:00 pm">9:00 pm</option>
+                <option value="10:00 pm">10:00 pm</option>
+              </select>
             </div>
             {/* Title */}
             <div>

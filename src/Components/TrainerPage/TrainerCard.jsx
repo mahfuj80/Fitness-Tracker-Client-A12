@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 /* eslint-disable react/prop-types */
 const TrainerCard = ({ trainer }) => {
-  console.log(trainer);
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-col items-center pb-10">

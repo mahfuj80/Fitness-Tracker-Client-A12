@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import useAxiosPublic from '../../hooks/Axios/useAxiosPublic';
 
 const SocialLogin = () => {
+  const axiosPublic = useAxiosPublic();
   const { googleSignIn, githubSignIn } = useAuth();
   const navigate = useNavigate();
   const handleGoogle = () => {
@@ -15,8 +16,9 @@ const SocialLogin = () => {
         const userInfo = {
           name: result?.user?.displayName,
           email: result?.user?.email,
+          image: result?.user?.photoURL,
         };
-        useAxiosPublic.post('/users', userInfo).then((res) => {
+        axiosPublic.post('/users', userInfo).then((res) => {
           Swal.fire('Logged In', 'You Successfully Logged In', 'success');
           console.log(res?.data);
           navigate(location?.state ? location.state : '/');
@@ -36,8 +38,9 @@ const SocialLogin = () => {
         const userInfo = {
           name: result?.user?.displayName,
           email: result?.user?.email,
+          image: result?.user?.photoURL,
         };
-        useAxiosPublic.post('/users', userInfo).then((res) => {
+        axiosPublic.post('/users', userInfo).then((res) => {
           Swal.fire('Logged In', 'You Successfully Logged In', 'success');
           console.log(res?.data);
           navigate(location?.state ? location.state : '/');
