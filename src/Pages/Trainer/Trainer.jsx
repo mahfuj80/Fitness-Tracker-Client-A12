@@ -6,6 +6,7 @@ import Loader from '../../Components/Shared/Loading/Loader';
 
 const Trainer = () => {
   const [trainers, loading] = useTrainers();
+
   if (loading) {
     return <Loader></Loader>;
   }
