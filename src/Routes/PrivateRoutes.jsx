@@ -6,7 +6,6 @@ import Loader from '../Components/Shared/Loading/Loader';
 const PrivetRoutes = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
-  console.log(user);
   if (loading) {
     return <Loader></Loader>;
   }

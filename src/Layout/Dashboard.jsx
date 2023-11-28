@@ -31,7 +31,7 @@ const Dashboard = () => {
   const adminRoutes = (
     <>
       <li className="font-semibold dark:hover:bg-gray-700 rounded-lg">
-        <NavLink to={'/dashboard/all-subscriber'}>
+        <NavLink to={'/dashboard/all-subscribers'}>
           <FaSubscript></FaSubscript> All Subscriber
         </NavLink>
       </li>
@@ -65,7 +65,7 @@ const Dashboard = () => {
       </li>
 
       <li className="font-semibold dark:hover:bg-gray-700 rounded-lg">
-        <NavLink to={'/dashboard/manage-member'}>
+        <NavLink to={'/dashboard/manage-members'}>
           <FaUser></FaUser> Manage Member
         </NavLink>
       </li>
