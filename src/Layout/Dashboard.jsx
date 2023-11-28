@@ -115,7 +115,7 @@ const Dashboard = () => {
   const sidebarLinksTop = (
     <>
       <li className="font-semibold dark:hover:bg-gray-700 rounded-lg">
-        <NavLink to={'/dashboard'}>
+        <NavLink to={`/dashboard/${userRole}`}>
           <RiDashboardFill></RiDashboardFill> Dashboard
         </NavLink>
       </li>

@@ -3,10 +3,13 @@ import useAuth from '../../../hooks/Auth/useAuth';
 import Swal from 'sweetalert2';
 import DarkWhite from '../../DarkWhiteTheme/DarkWhite';
 import { RiMenu2Line } from 'react-icons/ri';
+import useUserRole from '../../../hooks/User/useUserRole';
 
 const DashboardNavbar = () => {
   const { logOut, user } = useAuth();
   const navigate = useNavigate();
+  const [role] = useUserRole();
+  const userRole = role?.role;
 
   const handleLogOut = () => {
     logOut();
@@ -95,7 +98,7 @@ const DashboardNavbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to={'/dashboard'}>Dashboard</Link>
+                    <Link to={`/dashboard/${userRole}`}>Dashboard</Link>
                   </li>
                   <li>
                     <Link to={'/settings'}>Settings</Link>
