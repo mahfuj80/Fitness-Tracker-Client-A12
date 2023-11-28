@@ -1,12 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import Footer from '../Components/Shared/Footer/Footer';
-import Navbar from '../Components/Shared/Navbar/Navbar';
+import DashboardNavbar from '../Components/Shared/DashboardNavbar/DashboardNavbar';
 
 const Dashboard = () => {
   return (
     <div>
-      <Navbar></Navbar>
-      <Outlet></Outlet>
+      <DashboardNavbar></DashboardNavbar>
+      <div className="mt-[64px] md:mt-[68px]">
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );
