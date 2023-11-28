@@ -8,6 +8,7 @@ import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 import loginAnimation from './animation/login_animation.json';
 import { useLottie } from 'lottie-react';
 import useAxiosPublic from '../../hooks/Axios/useAxiosPublic';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 
 const RegisterPage = () => {
   const { user, createUser, updateUserProfile } = useAuth();
@@ -205,6 +206,7 @@ const RegisterPage = () => {
                 ></input>
               </div>
             </form>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
