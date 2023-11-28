@@ -15,26 +15,6 @@ const DashboardNavbar = () => {
     navigate('/');
   };
 
-  //   const navElement = (
-  //     <>
-  //       <li>
-  //         <NavLink to={'/'}>Home</NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to={'/gallery'}>Gallery</NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to={'/trainer'}>Trainer</NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to={'/classes'}>Classes</NavLink>
-  //       </li>
-  //       <li>
-  //         <NavLink to={'/community'}>Community</NavLink>
-  //       </li>
-  //     </>
-  //   );
-
   const loginAndLogOutButton = (
     <>
       <li className="font-semibold">
@@ -47,53 +27,22 @@ const DashboardNavbar = () => {
   );
   return (
     <>
-      <div className="drawer lg:drawer-open mt-[64px] top-">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
-          {/* Page content here */}
-          <label
-            htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label>
-        </div>
-        <div className="drawer-side top-[64px]">
-          <label
-            htmlFor="my-drawer-2"
-            aria-label="close sidebar"
-            className="drawer-overlay"
-          ></label>
-          <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-            {/* Sidebar content here */}
+      <div>
+        <div className="navbar bg-base-200 fixed z-20 max-w-screen-xl	mx-auto top-0 rounded-lg">
+          <div className="navbar-start">
+            <Link to={'/dashboard'} className="hidden lg:block">
+              <img className="h-12" src="/logo.png" alt="Logo" />
+            </Link>
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
               {/* Page content here */}
               <label
                 htmlFor="my-drawer-2"
-                className="btn btn-primary drawer-button lg:hidden"
+                className="btn btn-ghost drawer-button lg:hidden"
               >
-                Open drawer
-              </label>
-            </div>
-            <li>
-              <a>Sidebar Item 1</a>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div>
-        <div className="navbar bg-base-200 fixed z-20 max-w-screen-xl	mx-auto top-0 rounded-lg">
-          <div className="navbar-start">
-            <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-12 w-8"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -106,20 +55,11 @@ const DashboardNavbar = () => {
                   />
                 </svg>
               </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-semibold"
-              >
-                {/* {navElement} */}
-              </ul>
             </div>
-            <Link to={'/dashboard'}>
-              <img className="h-12" src="/logo.png" alt="Logo" />
-            </Link>
           </div>
-          <div className="navbar-center hidden lg:flex">
+          <div className="navbar-center lg:hidden">
             <ul className="menu menu-horizontal px-1 font-semibold">
-              {/* {navElement} */}
+              <img className="h-12" src="/logo.png" alt="Logo" />
             </ul>
           </div>
           <div className="navbar-end">
