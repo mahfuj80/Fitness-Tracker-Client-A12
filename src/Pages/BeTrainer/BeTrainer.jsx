@@ -191,14 +191,16 @@ const BeTrainer = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Yes, Proceed..',
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.post('/trainers', trainerInfo).then((res) => {
+        axiosSecure.post('/applied-trainers', trainerInfo).then((res) => {
           if (res?.data?.acknowledged) {
             toast.success('Successfully Applied, Wait For Conformation');
+            document.getElementById('myForm').reset();
           } else if (res?.data?.message === 'exists') {
             toast.error('You Already applied');
+            document.getElementById('myForm').reset();
           }
         });
       }
@@ -218,7 +220,7 @@ const BeTrainer = () => {
         }
       ></SectionTitle>
       <div className="pb-12">
-        <form onSubmit={handleBeTrainerForm} className="px-4">
+        <form id="myForm" onSubmit={handleBeTrainerForm} className="px-4">
           <div className="grid gap-6 mb-2 md:grid-cols-2 ">
             {/* Full Name */}
             <div>
@@ -229,6 +231,8 @@ const BeTrainer = () => {
                 Full-Name
               </label>
               <input
+                defaultValue={user?.displayName}
+                disabled
                 type="text"
                 id="first_name"
                 name="fullName"
@@ -459,7 +463,7 @@ const BeTrainer = () => {
           {/* Select Which Category You Can Train Our Students */}
           <p className="text-center font-bold mt-8 text-xl">
             Select Which Category You Want to Train Our Students <br /> Class
-            Time Should Be in 1 Hour
+            Time Should Be in 1 Hour <br /> Other Wise You Will Rejected
           </p>
           <div className="grid gap-6 mb-6 md:grid-cols-2  mt-4">
             {/* Cycling */}
