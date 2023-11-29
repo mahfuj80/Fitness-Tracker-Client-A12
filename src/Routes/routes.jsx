@@ -162,7 +162,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: '/dashboard/add-new-forum',
+        path: '/dashboard/add-new-forum/trainer',
         element: (
           <PrivetRoutes>
             <TrainersRoutes>
@@ -230,6 +230,16 @@ export const router = createBrowserRouter([
           <PrivetRoutes>
             <AdminRoutes>
               <AppliedTrainers></AppliedTrainers>
+            </AdminRoutes>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: '/dashboard/add-new-forum/admin',
+        element: (
+          <PrivetRoutes>
+            <AdminRoutes>
+              <AddNewForum></AddNewForum>
             </AdminRoutes>
           </PrivetRoutes>
         ),

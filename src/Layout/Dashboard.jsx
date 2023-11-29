@@ -53,6 +53,12 @@ const Dashboard = () => {
           <RiDashboardFill></RiDashboardFill> Balance
         </NavLink>
       </li>
+
+      <li className="font-semibold dark:hover:bg-gray-700 rounded-lg">
+        <NavLink to={'/dashboard/add-new-forum/admin'}>
+          <RiDashboardFill></RiDashboardFill> Add New Forum
+        </NavLink>
+      </li>
     </>
   );
 
@@ -71,7 +77,7 @@ const Dashboard = () => {
       </li>
 
       <li className="font-semibold dark:hover:bg-gray-700 rounded-lg">
-        <NavLink to={'/dashboard/add-new-forum'}>
+        <NavLink to={'/dashboard/add-new-forum/trainer'}>
           <RiDashboardFill></RiDashboardFill> Add New Forum
         </NavLink>
       </li>
