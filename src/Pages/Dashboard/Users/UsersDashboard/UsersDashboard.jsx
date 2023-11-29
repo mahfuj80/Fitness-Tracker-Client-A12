@@ -4,18 +4,27 @@ const UsersDashboard = () => {
   const [isApplied] = useIsUserAppliedForTrainer();
   console.log(isApplied);
   return (
-    <div>
-      <h1>This is UserDashboard Page</h1>
-      <div className="stats shadow">
-        <div className="stat">
-          <div className="stat-title">You Applied For Be A Trainer</div>
-          <div className="stat-value">Pending</div>
-          <div className="stat-desc">
-            Wait Few Days For Get Result. You Will Get Email.
+    <>
+      <div>
+        {isApplied ? (
+          <div className="stats shadow m-4 border-2 hover:shadow-2xl">
+            <div className="stat">
+              <div className="stat-title text-xl font-extrabold">
+                You Applied To Be A Trainer
+              </div>
+              <div className="stat-value">
+                Status: <span className="text-lg">Pending</span>
+              </div>
+              <div className="stat-desc">
+                Wait Few Days For Get Result. You Will Get Email.
+              </div>
+            </div>
           </div>
-        </div>
+        ) : (
+          ''
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

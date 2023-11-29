@@ -50,7 +50,7 @@ const Dashboard = () => {
 
       <li className="font-semibold dark:hover:bg-gray-700 rounded-lg">
         <NavLink to={'/dashboard/balance'}>
-          <RiDashboardFill></RiDashboardFill> Applied Trainers
+          <RiDashboardFill></RiDashboardFill> Balance
         </NavLink>
       </li>
     </>
@@ -148,7 +148,7 @@ const Dashboard = () => {
     <div>
       <div className="drawer lg:drawer-open mt-[62px]">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content">
           {/* Page content here */}
           <Outlet></Outlet>
         </div>

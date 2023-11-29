@@ -33,7 +33,7 @@ const DashboardNavbar = () => {
       <div>
         <div className="navbar bg-base-200 fixed z-20 max-w-screen-xl	mx-auto top-0 rounded-lg">
           <div className="navbar-start">
-            <Link to={'/dashboard'} className="hidden lg:block">
+            <Link to={`/dashboard/${userRole}`} className="hidden lg:block">
               <img className="h-12" src="/logo.png" alt="Logo" />
             </Link>
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
