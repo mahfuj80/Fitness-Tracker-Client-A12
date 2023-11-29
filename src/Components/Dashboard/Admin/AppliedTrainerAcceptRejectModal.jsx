@@ -4,8 +4,10 @@ import { FaEdit } from 'react-icons/fa';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/Axios/useAxiosSecure';
 
 const AppliedTrainerAcceptRejectModal = ({ trainer, index, refetch }) => {
+  const axiosSecure = useAxiosSecure();
   //  Accept This
   const handleAppliedTrainerAccept = (id, email) => {
     document.getElementById(email).click();
@@ -28,14 +30,19 @@ const AppliedTrainerAcceptRejectModal = ({ trainer, index, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          console.log(id);
-          refetch();
-
-          swalWithBootstrapButtons.fire({
-            title: 'Deleted!',
-            text: `You Make ${trainer?.fullName} Trainer`,
-            icon: 'success',
-          });
+          // /admin/accept-applied-trainer/:id
+          axiosSecure
+            .post(`/admin/accept-applied-trainer/${id}`, trainer)
+            .then((res) => {
+              if (res.data.acknowledge) {
+                refetch();
+                swalWithBootstrapButtons.fire({
+                  title: 'Accepted',
+                  text: `You Make ${trainer?.fullName} Trainer`,
+                  icon: 'success',
+                });
+              }
+            });
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
@@ -49,7 +56,7 @@ const AppliedTrainerAcceptRejectModal = ({ trainer, index, refetch }) => {
       });
   };
 
-  // Reject This
+  // Handle Reject Trainer
   const handleAppliedTrainerReject = (id, email) => {
     document.getElementById(email).click();
     const swalWithBootstrapButtons = Swal.mixin({
@@ -91,6 +98,7 @@ const AppliedTrainerAcceptRejectModal = ({ trainer, index, refetch }) => {
         }
       });
   };
+
   return (
     <>
       <tr>
