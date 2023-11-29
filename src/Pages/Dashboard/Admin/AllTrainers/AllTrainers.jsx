@@ -1,5 +1,7 @@
+import AllTrainersTableRow from '../../../../Components/Dashboard/Admin/AllTrainersTableRow';
 import Loader from '../../../../Components/Shared/Loading/Loader';
 import NoDataAvailable from '../../../../Components/Shared/NoDataAvailable/NoDataAvailable';
+import SectionTitle from '../../../../Components/Shared/SectionTitle/SectionTitle';
 import useAllTrainers from '../../../../hooks/Admin/useAllTrainers';
 import useAuth from '../../../../hooks/Auth/useAuth';
 
@@ -7,7 +9,7 @@ const AllTrainers = () => {
   const { loading } = useAuth();
   const [allTrainers, dataLoading] = useAllTrainers();
 
-  console.log(allTrainers);
+  console.log(allTrainers[0]?.startDate);
   if (loading || dataLoading) {
     return <Loader></Loader>;
   }
@@ -17,9 +19,34 @@ const AllTrainers = () => {
   }
 
   return (
-    <div>
-      <h1>This is AllTrainers Page</h1>
-    </div>
+    <>
+      <div>
+        <SectionTitle longTitle={'All Trainer'}></SectionTitle>
+      </div>
+      <div className="overflow-x-auto mx-4">
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr className="text-lg">
+              <th>#</th>
+              <th>Name, Image & Title</th>
+              <th>Skills</th>
+              <th>Experience</th>
+              <th>Payment Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allTrainers?.map((trainer, index) => (
+              <AllTrainersTableRow
+                key={trainer?._id}
+                trainer={trainer}
+                index={index}
+              ></AllTrainersTableRow>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

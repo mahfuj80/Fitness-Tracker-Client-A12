@@ -80,7 +80,6 @@ const AppliedTrainerAcceptRejectModal = ({ trainer, index, refetch }) => {
         if (result.isConfirmed) {
           console.log(id);
           refetch();
-
           swalWithBootstrapButtons.fire({
             title: 'Deleted!',
             text: `You Make ${trainer?.fullName} Trainer`,

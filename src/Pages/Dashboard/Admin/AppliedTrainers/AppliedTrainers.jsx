@@ -16,7 +16,7 @@ const AppliedTrainers = () => {
   if (appliedTrainers?.length < 1) {
     return (
       <NoDataAvailable
-        message={'No one Applied For Be A trainer'}
+        message={'No one Applied To Be A trainer'}
       ></NoDataAvailable>
     );
   }
