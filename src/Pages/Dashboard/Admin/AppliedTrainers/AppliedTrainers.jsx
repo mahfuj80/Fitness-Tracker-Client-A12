@@ -1,4 +1,4 @@
-import AppliedTrainerAcceptRejectModal from '../../../../Components/Dashboard/Admin/AppliedTrainerAcceptRejectModal';
+import AppliedTrainerAcceptRejectModal from '../../../../Components/Dashboard/Admin/AppliedTrainers/AppliedTrainerAcceptRejectModal';
 import Loader from '../../../../Components/Shared/Loading/Loader';
 import NoDataAvailable from '../../../../Components/Shared/NoDataAvailable/NoDataAvailable';
 import SectionTitle from '../../../../Components/Shared/SectionTitle/SectionTitle';

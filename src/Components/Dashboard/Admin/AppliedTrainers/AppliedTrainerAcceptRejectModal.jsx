@@ -4,7 +4,7 @@ import { FaEdit } from 'react-icons/fa';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../../hooks/Axios/useAxiosSecure';
+import useAxiosSecure from '../../../../hooks/Axios/useAxiosSecure';
 
 const AppliedTrainerAcceptRejectModal = ({ trainer, index, refetch }) => {
   const axiosSecure = useAxiosSecure();

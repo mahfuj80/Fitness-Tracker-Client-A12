@@ -1,4 +1,4 @@
-import AllTrainersTableRow from '../../../../Components/Dashboard/Admin/AllTrainersTableRow';
+import AllTrainersTableRow from '../../../../Components/Dashboard/Admin/AllTrainers/AllTrainersTableRow';
 import Loader from '../../../../Components/Shared/Loading/Loader';
 import NoDataAvailable from '../../../../Components/Shared/NoDataAvailable/NoDataAvailable';
 import SectionTitle from '../../../../Components/Shared/SectionTitle/SectionTitle';
@@ -32,7 +32,9 @@ const AllTrainers = () => {
               <th>Name, Image & Title</th>
               <th>Skills</th>
               <th>Experience</th>
-              <th>Payment Status</th>
+              <th>Payment Due</th>
+              <th>Pay</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
