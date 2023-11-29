@@ -10,6 +10,30 @@ const Trainer = () => {
   if (loading) {
     return <Loader></Loader>;
   }
+  if (trainers?.length < 1) {
+    return (
+      <>
+        <p className="py-32 px-8 text-center font-bold text-xl">
+          No Trainer Available Right Now
+        </p>
+        <div className="hero bg-base-200 mt-4  w-[90%] mx-auto md:w-[80%] rounded-lg mb-2">
+          <div className="hero-content text-center">
+            <div className="max-w-md">
+              <h1 className="text-5xl font-bold">Become Our Team Member</h1>
+              <p className="py-6">
+                Join our dynamic team! Elevate your career with opportunities
+                for growth, collaboration, and impact. Become a valued member as
+                we work together to inspire and shape a healthier future.
+              </p>
+              <Link to={'/be-trainer'}>
+                <button className="btn btn-primary">Be a Trainer</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="py-4">

@@ -458,7 +458,8 @@ const BeTrainer = () => {
 
           {/* Select Which Category You Can Train Our Students */}
           <p className="text-center font-bold mt-8 text-xl">
-            Select Which Category You Want to Train Our Students
+            Select Which Category You Want to Train Our Students <br /> Class
+            Time Should Be in 1 Hour
           </p>
           <div className="grid gap-6 mb-6 md:grid-cols-2  mt-4">
             {/* Cycling */}

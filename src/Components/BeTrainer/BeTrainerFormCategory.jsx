@@ -7,7 +7,11 @@ const BeTrainerFormCategory = ({ title, name }) => {
     <div className="border-2 rounded-lg p-4">
       <div className="flex items-center justify-center gap-2  mt-2">
         <p className="text-center font-bold">{title}</p>
-        <input type="checkbox" name={name} className="checkbox checkbox-md" />
+        <input
+          type="checkbox"
+          name={name}
+          className="checkbox checkbox-md text-5xl"
+        />
       </div>
       <div className="flex justify-between gap-4 mt-4">
         <div className="w-1/2">
