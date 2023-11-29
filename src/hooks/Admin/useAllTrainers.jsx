@@ -2,21 +2,21 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../Auth/useAuth';
 import useAxiosSecure from '../Axios/useAxiosSecure';
 
-const useAllSubscribers = () => {
+const useAllTrainers = () => {
   const { loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const {
-    data: allSubscribers = [],
+    data: allTrainers = [],
     isPending: dataLoading,
     refetch,
   } = useQuery({
-    queryKey: ['allSubscribers'],
+    queryKey: ['allTrainers'],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/admin/all-subscribers`);
+      const res = await axiosSecure.get(`/admin/all-trainers`);
       return res?.data;
     },
   });
-  return [allSubscribers, dataLoading, refetch];
+  return [allTrainers, dataLoading, refetch];
 };
-export default useAllSubscribers;
+export default useAllTrainers;

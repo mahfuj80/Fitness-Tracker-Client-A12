@@ -3,6 +3,7 @@ import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
 import TrainerCard from '../../Components/TrainerPage/TrainerCard';
 import useTrainers from '../../hooks/Trainers/useTrainers';
 import Loader from '../../Components/Shared/Loading/Loader';
+import NoDataAvailable from '../../Components/Shared/NoDataAvailable/NoDataAvailable';
 
 const Trainer = () => {
   const [trainers, loading] = useTrainers();
@@ -13,9 +14,9 @@ const Trainer = () => {
   if (trainers?.length < 1) {
     return (
       <>
-        <p className="py-32 px-8 text-center font-bold text-xl">
-          No Trainer Available Right Now
-        </p>
+        <NoDataAvailable
+          message={'No Trainer Available Right Now'}
+        ></NoDataAvailable>
         <div className="hero bg-base-200 mt-4  w-[90%] mx-auto md:w-[80%] rounded-lg mb-2">
           <div className="hero-content text-center">
             <div className="max-w-md">

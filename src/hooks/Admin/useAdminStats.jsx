@@ -3,11 +3,10 @@ import useAuth from '../Auth/useAuth';
 import useAxiosSecure from '../Axios/useAxiosSecure';
 
 const useAdminStats = () => {
-  const { user, loading } = useAuth();
-  console.log(!loading, user);
+  const { loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const {
-    data: adminStats = '',
+    data: adminStats = {},
     isPending: dataLoading,
     refetch,
   } = useQuery({
@@ -15,7 +14,6 @@ const useAdminStats = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/admin-stats`);
-      console.log(res.data);
       return res?.data;
     },
   });
