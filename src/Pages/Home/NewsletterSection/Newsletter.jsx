@@ -6,9 +6,11 @@ const Newsletter = () => {
   const axiosPublic = useAxiosPublic();
   const inputRef = useRef(null);
   const [error, setError] = useState('');
+  const date = Date();
   const handleNewsLetter = () => {
     const value = {
       email: inputRef.current.value,
+      date: date,
     };
     if (value?.email === '') {
       setError('Please Provide email');

@@ -14,7 +14,7 @@ const useAllSubscribers = () => {
     queryKey: ['allSubscribers'],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/admin/all-users`);
+      const res = await axiosSecure.get(`/admin/all-subscribers`);
       console.log(res.data);
       return res?.data;
     },
