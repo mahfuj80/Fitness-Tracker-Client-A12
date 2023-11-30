@@ -15,7 +15,7 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <div className="stats shadow w-full p-4 hover:shadow-2xl m-4 border-2 mr-8">
+      <div className="stats flex flex-col md:flex-row shadow w-full mr-2 p-4 hover:shadow-2xl mt-2 border-2 lg:mr-8">
         <div className="stat place-items-center">
           <div className="stat-title">Total Subscribers</div>
           <div className="stat-value">{totalSubscribers}</div>

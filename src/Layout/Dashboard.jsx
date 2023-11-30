@@ -154,7 +154,7 @@ const Dashboard = () => {
     <div>
       <div className="drawer lg:drawer-open mt-[62px]">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
+        <div className="drawer-content py-4 min-h-[60vh]">
           {/* Page content here */}
           <Outlet></Outlet>
         </div>

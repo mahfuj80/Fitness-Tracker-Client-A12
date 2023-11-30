@@ -14,10 +14,12 @@ const AddNewForum = () => {
     const title = e.target.forumTitle.value;
     const description = e.target.forumDescription.value;
     const category = e.target.category.value;
+    const thumbnail = e.target.thumbnail.value;
     const date = new Date();
     const forumInfo = {
       name: user?.displayName,
       email: user?.email,
+      thumbnail,
       image: user?.photoURL,
       title,
       description,
@@ -63,6 +65,18 @@ const AddNewForum = () => {
             name="forumTitle"
             required
             placeholder="Forum Title"
+            className="input input-bordered input-accent w-full"
+          />
+        </label>
+        <label className="form-control w-full mb-8">
+          <div className="label">
+            <span className="label-text">Thumbnail Image URL..</span>
+          </div>
+          <input
+            type="text"
+            name="thumbnail"
+            required
+            placeholder="Thumbnail URL.."
             className="input input-bordered input-accent w-full"
           />
         </label>
