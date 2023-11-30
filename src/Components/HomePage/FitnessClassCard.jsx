@@ -8,17 +8,17 @@ const FitnessClassCard = ({ fitnessClass }) => {
       <figure>
         <img
           className="h-[250px] rounded-xl w-full object-cover p-4"
-          src={fitnessClass?.image}
+          src={fitnessClass?.classThumbnail}
           alt="Class_Image"
         />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{fitnessClass?.title}</h2>
         <p>{fitnessClass?.description}</p>
-        <p className="font-bold">{fitnessClass?.date}</p>
+        <p className="font-bold">Work Days at {fitnessClass?.classTime}</p>
         <div className="card-actions justify-end">
-          <Link>
-            <button className="btn btn-primary">Details</button>
+          <Link to={'/trainer'}>
+            <button className="btn btn-primary">Book</button>
           </Link>
         </div>
       </div>

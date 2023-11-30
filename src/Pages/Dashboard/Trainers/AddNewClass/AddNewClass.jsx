@@ -9,11 +9,12 @@ const AddNewClass = () => {
   const { user, loading } = useAuth();
   const [role, dataLoading] = useUserRole();
   const axiosSecure = useAxiosSecure();
-  const handleclassSubmit = (e) => {
+  const handleClassSubmit = (e) => {
     e.preventDefault();
     const title = e.target.classTitle.value;
     const description = e.target.classDescription.value;
-    const category = e.target.category.value;
+    const classTime = e.target.classTime.value;
+    const classThumbnail = e.target.classThumbnail.value;
     const date = new Date();
     const classInfo = {
       name: user?.displayName,
@@ -21,16 +22,16 @@ const AddNewClass = () => {
       image: user?.photoURL,
       title,
       description,
+      classThumbnail,
       userRole: role.role,
       date,
-      category,
-      like: 0,
-      dislike: 0,
+      classTime,
     };
 
-    if (category === '0') {
-      return toast.error('Please Select Category');
+    if (classTime === '0') {
+      return toast.error('Please Select classTime');
     }
+
     axiosSecure.post('/class', classInfo).then((res) => {
       if (res?.data?.insertedId) {
         toast.success('class Added');
@@ -51,7 +52,7 @@ const AddNewClass = () => {
       ></SectionTitle>
       <form
         id="classForm"
-        onSubmit={handleclassSubmit}
+        onSubmit={handleClassSubmit}
         className="w-full md:px-8 px-4"
       >
         <label className="form-control w-full mb-8">
@@ -66,6 +67,20 @@ const AddNewClass = () => {
             className="input input-bordered input-accent w-full"
           />
         </label>
+
+        <label className="form-control w-full mb-8">
+          <div className="label">
+            <span className="label-text">Your class Thumbnail URL..</span>
+          </div>
+          <input
+            type="text"
+            name="classThumbnail"
+            required
+            placeholder="Thumbnail URL.."
+            className="input input-bordered input-accent w-full"
+          />
+        </label>
+
         <label className="form-control w-full mb-8">
           <div className="label">
             <span className="label-text">Your class Description Here..</span>
@@ -74,24 +89,33 @@ const AddNewClass = () => {
             className="textarea textarea-accent w-full"
             name="classDescription"
             required
-            placeholder="Bio"
+            placeholder="Description..."
           ></textarea>
         </label>
 
         <label className="form-control w-full mb-8">
           <div className="label">
-            <span className="label-text">class Category</span>
+            <span className="label-text">class classTime</span>
           </div>
           <select
             required
-            name="category"
+            name="classTime"
             className="select select-bordered border-accent"
             defaultValue={'0'}
           >
-            <option value={'0'}>Pick one</option>
-            <option value={'body'}>Body</option>
-            <option value={'health'}>Health</option>
-            <option value={'Nature'}>Nature</option>
+            <option value={'0'}>Select Time</option>
+            <option value="5:00 am">5:00 am</option>
+            <option value="6:00 am">6:00 am</option>
+            <option value="7:00 am">7:00 am</option>
+            <option value="8:00 am">8:00 am</option>
+            <option value="9:00 am">9:00 am</option>
+            <option value="4:00 pm">4:00 pm</option>
+            <option value="5:00 pm">5:00 pm</option>
+            <option value="6:00 pm">6:00 pm</option>
+            <option value="7:00 pm">7:00 pm</option>
+            <option value="8:00 pm">8:00 pm</option>
+            <option value="9:00 pm">9:00 pm</option>
+            <option value="10:00 pm">10:00 pm</option>
           </select>
         </label>
         <div className="text-center mb-8">
