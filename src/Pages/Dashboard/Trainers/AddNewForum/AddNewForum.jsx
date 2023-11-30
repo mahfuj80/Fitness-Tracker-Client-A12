@@ -13,15 +13,24 @@ const AddNewForum = () => {
     e.preventDefault();
     const title = e.target.forumTitle.value;
     const description = e.target.forumDescription.value;
+    const category = e.target.category.value;
     const date = new Date();
     const forumInfo = {
+      name: user?.displayName,
       email: user?.email,
       image: user?.photoURL,
       title,
       description,
       userRole: role.role,
       date,
+      category,
+      like: 0,
+      dislike: 0,
     };
+
+    if (category === '0') {
+      return toast.error('Please Select Category');
+    }
     axiosSecure.post('/forum', forumInfo).then((res) => {
       if (res?.data?.insertedId) {
         toast.success('Forum Added');
@@ -59,7 +68,7 @@ const AddNewForum = () => {
         </label>
         <label className="form-control w-full mb-8">
           <div className="label">
-            <span className="label-text">Your Forum Title Here..</span>
+            <span className="label-text">Your Forum Description Here..</span>
           </div>
           <textarea
             className="textarea textarea-accent w-full"
@@ -67,6 +76,23 @@ const AddNewForum = () => {
             required
             placeholder="Bio"
           ></textarea>
+        </label>
+
+        <label className="form-control w-full mb-8">
+          <div className="label">
+            <span className="label-text">Forum Category</span>
+          </div>
+          <select
+            required
+            name="category"
+            className="select select-bordered border-accent"
+            defaultValue={'0'}
+          >
+            <option value={'0'}>Pick one</option>
+            <option value={'body'}>Body</option>
+            <option value={'health'}>Health</option>
+            <option value={'Nature'}>Nature</option>
+          </select>
         </label>
         <div className="text-center mb-8">
           <input type="submit" value={'Submit'} className="btn btn-primary" />
