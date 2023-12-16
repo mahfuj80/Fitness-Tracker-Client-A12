@@ -20,7 +20,7 @@ A full-stack website for job seekers and employers, providing a platform to find
 
 ## Demo
 
-## Live Link: https://skillswapr-a11.web.app/](https://fitness-tracker-a12.web.app
+## Live Link: https://fitness-tracker-a12.web.app
 
 ## Features
 
