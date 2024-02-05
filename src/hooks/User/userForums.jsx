@@ -1,19 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import useAuth from '../Auth/useAuth';
-import useAxiosSecure from '../Axios/useAxiosSecure';
+import useAxiosPublic from '../Axios/useAxiosPublic';
 
 const useForums = () => {
-  const { loading } = useAuth();
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const {
     data: forums = [],
     isPending: dataLoading,
     refetch,
   } = useQuery({
     queryKey: ['forums'],
-    enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/forum`);
+      const res = await axiosPublic.get(`/forum`);
       return res?.data;
     },
   });

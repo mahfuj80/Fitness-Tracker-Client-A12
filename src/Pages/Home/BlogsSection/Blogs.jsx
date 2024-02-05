@@ -2,11 +2,9 @@ import { Link } from 'react-router-dom';
 import BlogsCard from '../../../Components/HomePage/BlogsCard';
 import useForums from '../../../hooks/User/userForums';
 import Loader from '../../../Components/Shared/Loading/Loader';
-import useAuth from '../../../hooks/Auth/useAuth';
 import NoDataAvailable from '../../../Components/Shared/NoDataAvailable/NoDataAvailable';
 
 const Blogs = () => {
-  const { loading } = useAuth();
   const [forums, dataLoading] = useForums();
 
   // get the latest 5 Blogs From Forum
@@ -17,7 +15,7 @@ const Blogs = () => {
     blogsArticle = forums;
   }
 
-  if (loading || dataLoading) {
+  if (dataLoading) {
     return <Loader></Loader>;
   }
 

@@ -2,15 +2,13 @@ import ForumPageCard from '../../Components/ForumPage/ForumPageCard';
 import Loader from '../../Components/Shared/Loading/Loader';
 import NoDataAvailable from '../../Components/Shared/NoDataAvailable/NoDataAvailable';
 import SectionTitle from '../../Components/Shared/SectionTitle/SectionTitle';
-import useAuth from '../../hooks/Auth/useAuth';
 import useForums from '../../hooks/User/userForums';
 
 const Community = () => {
-  const { loading } = useAuth();
   const [forum, dataLoading] = useForums();
   const forums = forum;
 
-  if (dataLoading || loading) {
+  if (dataLoading) {
     return <Loader></Loader>;
   }
   if (forum.length < 1) {

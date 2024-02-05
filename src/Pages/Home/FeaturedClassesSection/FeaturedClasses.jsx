@@ -1,11 +1,9 @@
 import FitnessClassCard from '../../../Components/HomePage/FitnessClassCard';
 import Loader from '../../../Components/Shared/Loading/Loader';
 import NoDataAvailable from '../../../Components/Shared/NoDataAvailable/NoDataAvailable';
-import useAuth from '../../../hooks/Auth/useAuth';
 import useClasses from '../../../hooks/User/useClasses';
 
 const FeaturedClasses = () => {
-  const { loading } = useAuth();
   const [classes, dataLoading] = useClasses();
 
   // get the latest 5 Blogs From Forum
@@ -16,7 +14,7 @@ const FeaturedClasses = () => {
     fitnessClasses = classes;
   }
 
-  if (loading || dataLoading) {
+  if (dataLoading) {
     return <Loader></Loader>;
   }
 
@@ -33,7 +31,7 @@ const FeaturedClasses = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {fitnessClasses?.map((fitnessClass) => (
           <FitnessClassCard
-            key={fitnessClass?.id}
+            key={fitnessClass?._id}
             fitnessClass={fitnessClass}
           ></FitnessClassCard>
         ))}
