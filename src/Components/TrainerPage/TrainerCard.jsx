@@ -53,56 +53,56 @@ const TrainerCard = ({ trainer }) => {
             <div className="flex h-3 px-8">
               <div
                 className={
-                  trainer?.availableTimeInDay >= 1
+                  trainer?.classes?.length >= 1
                     ? 'border-2 border-gray-600 w-6 bg-blue-600'
                     : 'border-2 border-gray-600 w-6'
                 }
               ></div>
               <div
                 className={
-                  trainer?.availableTimeInDay >= 2
+                  trainer?.classes?.length >= 2
                     ? 'border-2 border-gray-600 w-6 bg-blue-600'
                     : 'border-2 border-gray-600 w-6'
                 }
               ></div>
               <div
                 className={
-                  trainer?.availableTimeInDay >= 3
+                  trainer?.classes?.length >= 3
                     ? 'border-2 border-gray-600 w-6 bg-blue-600'
                     : 'border-2 border-gray-600 w-6'
                 }
               ></div>
               <div
                 className={
-                  trainer?.availableTimeInDay >= 4
+                  trainer?.classes?.length >= 4
                     ? 'border-2 border-gray-600 w-6 bg-blue-600'
                     : 'border-2 border-gray-600 w-6'
                 }
               ></div>
               <div
                 className={
-                  trainer?.availableTimeInDay >= 5
+                  trainer?.classes?.length >= 5
                     ? 'border-2 border-gray-600 w-6 bg-blue-600'
                     : 'border-2 border-gray-600 w-6'
                 }
               ></div>
               <div
                 className={
-                  trainer?.availableTimeInDay >= 6
+                  trainer?.classes?.length >= 6
                     ? 'border-2 border-gray-600 w-6 bg-blue-600'
                     : 'border-2 border-gray-600 w-6'
                 }
               ></div>
               <div
                 className={
-                  trainer?.availableTimeInDay >= 7
+                  trainer?.classes?.length >= 7
                     ? 'border-2 border-gray-600 w-6 bg-blue-600'
                     : 'border-2 border-gray-600 w-6'
                 }
               ></div>
               <div
                 className={
-                  trainer?.availableTimeInDay >= 8
+                  trainer?.classes?.length >= 8
                     ? 'border-2 border-gray-600 w-6 bg-blue-600'
                     : 'border-2 border-gray-600 w-6'
                 }
